@@ -1,0 +1,119 @@
+.chat-background{
+    position: relative;
+    background-color: rgb(29, 29, 29);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.chat-background > div{
+    width: 90%;
+    height: 90%;
+    background-color: rgb(24, 24, 24);
+}
+
+.nav{
+    position: relative;
+    width: 22vw;
+    height: 100%;
+    background-color: rgb(19, 19, 19);
+    color: white;
+    font-weight: 600;
+}
+
+.nav > div{
+    list-style: none;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    margin: .5rem;
+    margin-left: 1rem;
+    color:rgb(184, 184, 184);
+}
+
+.nav button{
+    border-radius: 3px;
+    padding: 0rem .5rem;
+    height: 40px;
+    margin-top: 8px;
+}
+
+.nav input{
+    width: 100%;
+    background-color: rgb(24, 24, 24);
+    padding: .7rem .7rem;
+    outline: none;
+    border-radius: 6px;
+    color:rgb(41, 41, 41);
+    font-weight: 500;
+}
+
+.addChannel{
+    justify-content: space-between;
+}
+
+.groups{
+    height: 60vh;
+    overflow-y: scroll;
+}
+
+.groups::-webkit-scrollbar{
+    width: 10px;
+    background-color: transparent;
+}
+
+.groups::-webkit-scrollbar-thumb{
+    background-color: rgb(36, 36, 36);
+    border-radius: 10px;
+}
+
+.groups li:hover{
+    color: rgb(123, 158, 253);
+    transition: all .5s;
+}
+
+.user-nav{
+    position: absolute;
+    height: 70px;
+    bottom: .5rem;
+    display: flex;
+    background-color: rgb(12, 12, 12);
+    text-align: left;
+}
+
+.user-nav img{
+    width: 4rem;
+    height: 3rem;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.form-channel{
+    position: absolute;
+    width: 600px;
+    border-radius: 9px;
+    text-align: left;
+    background-color: rgb(17, 17, 17);
+}
+
+.form-channel > p{
+    color: rgb(184, 184, 184);
+    font-weight: 600;
+}
+
+.form-channel form{
+    padding: 0rem 1rem;
+}
+
+.form-channel input, textarea{
+    width: 100%;
+    background-color: rgb(36, 36, 36);
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+.form-channel form textarea{
+    margin-top: 1rem;
+}

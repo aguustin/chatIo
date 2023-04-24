@@ -1,0 +1,48 @@
+.details{
+    border: 1px solid whitesmoke;
+    justify-content: center;
+}
+.details thead, tr{
+    border-bottom: 1px solid whitesmoke;
+}
+
+.details td{
+    padding: 1.5rem 1.5rem;
+}
+
+.details button{
+   
+    border: 1px solid whitesmoke;
+    padding: .7rem 2rem;
+}
+
+.tdB{
+    padding-right: -20px;
+}
+
+.edit{
+    width: 50vw;
+    border: 1px solid rgb(218, 218, 218);
+}
+
+.edit > div{
+    width: 30vw;
+    text-align: left;
+    padding: 2rem 3rem;
+}
+
+.form-input{
+    border-radius: 1rem;
+    width: 100%;
+    border: 1px solid rgb(218, 218, 218);
+    padding: .7rem .5rem;
+}
+
+#save{
+    color: white;
+    font-weight: 600;
+    background: rgb(64, 64, 253);
+    border-radius: 10px;
+    padding: .5rem 1.5rem;
+    margin-top: 1rem;
+}

@@ -1,0 +1,46 @@
+.edit{
+    width: 30vw;
+    min-width: 450px;
+}
+
+
+
+.loginRegister{
+    margin-top: 13vh;
+    width: 28vw;
+    min-width: 450px;
+    border: 1px solid rgb(224, 153, 153);
+    padding: 1.5rem 2.5rem;
+}
+
+.form-input, .form-button{
+    margin-top: 1rem;
+}
+
+.form-input input{
+    color: rgb(214, 214, 214);
+    outline: none;
+}
+
+.form-input input , .form-button{
+    width: 90%;
+}
+
+.form-button{
+    background-color: rgb(79, 79, 214);
+    color: white;
+    padding: .5rem ;
+}
+
+.loginRegister > div{
+    width: 90%;
+}
+
+.loginRegister > div, img, b, p{
+    margin: 1rem;
+}
+
+.loginRegister > div b{
+    font-size: 19px;
+}
+
