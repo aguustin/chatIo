@@ -12,14 +12,17 @@ const DetailsBody = (user) => {
 
     const edit = async (e, id) => {
         e.preventDefault();
+        const photo = e.target.elements.photo.files[0];
         const name = e.target.elements.name.value;
         const bio = e.target.elements.bio.value;
         const phone = e.target.elements.phone.value;
         const email = e.target.elements.email.value;
         const password = e.target.elements.password.value;
+
+        console.log(photo);
       
         const editUserOb = {
-            photo: image,
+            photo: photo,
             name: name,
             bio: bio,
             phone: phone,
@@ -75,7 +78,7 @@ const DetailsBody = (user) => {
                     { image.length === 0 ? <img src="" alt=""></img> :  <img src={image.name} alt=""></img> }
                     <div>
                         <label>Photo</label>
-                        <input type="file" name="photo" onChange={(e) => setImage(e.target.files[0])}></input>
+                        <input  type="file" name="photo" accept='image/*'></input>
                     </div>
                     <div>
                         <label>Name</label>

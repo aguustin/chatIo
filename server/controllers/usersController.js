@@ -32,7 +32,8 @@ export const loginUser = async (req, res) => {
         }else{
 
             console.log("The email is not found");
-
+    
+            res.send(400);
         }
 
 }
@@ -63,6 +64,7 @@ export const registerUser = async (req, res) => {
             password:hash
         })
         console.log("registrado");
+        
         await newUser.save();
     
         res.send(newUser);
@@ -74,7 +76,6 @@ export const details = async (req, res) => {
 
     const id = req.params.id;
 
-    console.log(id);
         try{
             const userDetails = await users.find({_id: id});
 
@@ -89,13 +90,12 @@ export const details = async (req, res) => {
 export const editUser = async (req, res) => {
 
     const id = req.params.id;
-    
-    const { name, bio, phone, email, password } = req.body;
-
+    const {name, bio, phone, email, password } = req.body;
     let photo;
+    console.log(req.files.photo);
 
     if(req.files){
-        //console.log(req.files);
+
     const result = await imageUploader(req.files.photo.tempFilePath);
     await fs.remove(req.files.photo.tempFilePath);
     
