@@ -1,4 +1,6 @@
 import chatGroup from '../models/chatModel.js';
+import { imageUploader } from '../libs/cloudinary.js';
+import fs from "fs-extra";
 
 export const addNewChannelController = async (req, res) => {
      const {title, description, idMember} = req.body;
@@ -15,32 +17,55 @@ export const addNewChannelController = async (req, res) => {
 }
 
 export const enterInChannelController = async (req, res) => {
-    const {id, memberPhoto, idMember, memberName} = req.params;
-
+    const {id, idMember, memberName} = req.body;
+ 
     const userExist = await chatGroup.find({"members.idMember": idMember});
 
-    if(userExist.length !== 0){
-
+    if(userExist.length === 0){
+        
        const getOldMessages = await chatGroup.find({_id: id});
 
        res.send(getOldMessages);
 
     }else{
+        if(req.files){
 
-        const saveMemberInChannel = await chatGroup.updateOne(
-            {_id: id},
-            {
-                $addToSet:{
-                    members:{ 
-                        memberPhoto: memberPhoto,
-                        idMember: idMember,
-                        memberName: memberName,
+            const result = await imageUploader(req.files.memberPhoto.tempFilePath);
+            await fs.remove(req.files.memberPhoto.tempFilePath);
+
+            const memberPhoto = result.secure_url;
+            console.log(memberPhoto); 
+            const saveMemberInChannel = await chatGroup.updateOne(
+                {_id: id},
+                {
+                    $addToSet:{
+                        message:{ 
+                            memberPhoto: memberPhoto,
+                            memberName: memberName,
+                            messageMember: "Hi Guys"
+                        }
                     }
                 }
+             )
+
+             res.send(saveMemberInChannel);
+
+            }else{      
+
+                const saveMemberInChannel = await chatGroup.updateOne(
+                    {_id: id},
+                    {
+                        $addToSet:{
+                            message:{ 
+                                memberName: memberName,
+                                messageMember: "Hi Guys"
+                            }
+                        }
+                    }
+                 )
+                res.send(saveMemberInChannel);
+
             }
-         )
-        const response = await saveMemberInChannel.save();
-        res.send(response);
     }
 }
 
