@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { loginRequest, registerRequest, detailsRequest, editRequest } from "../api/request";
 
 
@@ -8,7 +8,11 @@ export const UserContextProvider = ({children}) => {
 
    
     const [userDetail, setUserDetail] = useState([]);
-    const [session, setSession] = useState();
+    const [session, setSession] = useState([]);
+
+    useEffect(() => {
+        setSession(JSON.parse(localStorage.getItem("credentials")));
+    }, []);
 
     const getUserDetails = async (id) => {
         const res = await detailsRequest(id);

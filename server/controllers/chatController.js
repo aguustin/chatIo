@@ -1,11 +1,12 @@
 import chatGroup from '../models/chatModel.js';
 
 export const addNewChannelController = async (req, res) => {
-     const {title, description} = req.body;
+     const {title, description, idMember} = req.body;
 
      const newChannel = await new chatGroup({
         title: title,
-        description: description
+        description: description,
+        members: { idMember : idMember}
      });
 
      const response = await newChannel.save();
@@ -14,7 +15,7 @@ export const addNewChannelController = async (req, res) => {
 }
 
 export const enterInChannelController = async (req, res) => {
-    const {id, idMember, memberName} = req.params;
+    const {id, memberPhoto, idMember, memberName} = req.params;
 
     const userExist = await chatGroup.find({"members.idMember": idMember});
 
@@ -30,7 +31,11 @@ export const enterInChannelController = async (req, res) => {
             {_id: id},
             {
                 $addToSet:{
-                    members:{ idMember: idMember }
+                    members:{ 
+                        memberPhoto: memberPhoto,
+                        idMember: idMember,
+                        memberName: memberName,
+                    }
                 }
             }
          )
@@ -40,13 +45,18 @@ export const enterInChannelController = async (req, res) => {
 }
 
 export const enterMessageController = async (req, res) => {
-    const {id, memberName, messageDate, memberMessage} = req.body;
+    const {id, memberPhoto, memberName, messageDate, memberMessage} = req.body;
 
     await chatGroup.updateOne(
         {_id: id},
         {
             $addToSet:{
-                message:{memberName, messageDate, messageMember}
+                message:{
+                    memberPhoto: memberPhoto,
+                    memberName: memberName, 
+                    messageDate: messageDate,
+                    messageMember: memberMessage
+                }
             }
         }
     )
@@ -58,4 +68,11 @@ export const enterMessageController = async (req, res) => {
         });
 
     res.send(updateGroupMessages);
+}
+
+
+export const findChannelsController = async (req, res) => {
+     const {id} = req.params;
+     const allChannels = await chatGroup.find({"members.idMember" : id});
+     res.send(allChannels);
 }

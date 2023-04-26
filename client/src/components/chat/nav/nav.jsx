@@ -1,17 +1,19 @@
 import './nav.css';
 import prueba from "../../../img/prueba.jpg";
 import ChatBody from '../chatBody/chatBody';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import UserContext from '../../../userContext/userContex';
 
 const Nav = () => {
 
     const [newChannelLayout, setNewChannelLayout] = useState(false);
+    const {session} = useContext(UserContext);
 
     const addChannel = (e) => {
         e.preventDefault(e);
         setNewChannelLayout(!newChannelLayout)
     }
-
+    
     const NewChannel = () => {
         return(
                 <div className='form-channel'>
@@ -42,12 +44,12 @@ const Nav = () => {
                             <button className='w-full text-left'>FM GROUP MEMB</button>
                         </li>
                     </div>
-                    <div className='user-nav'>
-                        <img src={prueba} alt=""></img>
-                        <p>username and lastname</p>
-                    </div>
+                    {session.map((s) =><div key={s._id} className='user-nav'>
+                        <img src={s.photo?.url} alt=""></img>
+                         <p>{s.name}</p>
+                    </div>)}
                 </nav>
-                    <ChatBody/>
+                    <ChatBody session={session[0]}/>
                     {newChannelLayout ? <NewChannel/> : ''}
             </div>
         </div>

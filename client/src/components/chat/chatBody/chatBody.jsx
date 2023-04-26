@@ -2,7 +2,8 @@ import './chatBody.css';
 import io from "socket.io-client";
 import prueba from "../../../img/prueba.jpg";
 
-const ChatBody = () => {
+const ChatBody = (session) => {
+
     return(
         <div className='w-full'>
             <div className='group-title'>
@@ -11,11 +12,11 @@ const ChatBody = () => {
             <div className='container-message'>
                 <div className='message'>
                     <div>
-                        <img src={prueba} alt=""></img>
+                        <img src={session.session?.photo?.url} alt=""></img>
                     </div>
                     <div className='message-info'>
                         <li className='flex'>
-                            <p>username and lastname</p>
+                            <p>{session.session?.name}</p>
                             <p>january at 22:32 AM</p>
                         </li>
                         <p> Lorem ipsum, dolor sit amet consectetur adipisicing elit.

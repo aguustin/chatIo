@@ -14,9 +14,12 @@ const chatSchema = new mongoose.Schema({
             type: String
         },
     }
-],
+    ],
     message:[
         {
+            memberPhoto:{
+                type:String
+            },
             memberName:{
                 type:String
             },
