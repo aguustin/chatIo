@@ -1,13 +1,15 @@
 import { Router } from "express";
-import { addNewChannelController, openChannelController, enterMessageController, findChannelsController } from "../controllers/chatController.js";
+import { addNewChannelController, addMemberController, openChannelController, sendMessageController, findChannelsController } from "../controllers/chatController.js";
 
 const router = Router();
 
 router.post('/addChannel', addNewChannelController);
 
+router.post('/addMember', addMemberController);
+
 router.get('/openChannel/:channelId', openChannelController);
 
-router.post('/senedMessage', enterMessageController);
+router.post('/sendMessage', sendMessageController);
 
 router.get('/getChannels/:session', findChannelsController);
 

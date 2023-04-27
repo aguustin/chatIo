@@ -20,7 +20,7 @@ const io = new webSocketServer(httpServer, {
     }
 });
 io.on('connection', () => {
-    console.log("nueva conexion");
+    
 })
 connectionDb();
 

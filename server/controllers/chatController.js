@@ -1,6 +1,5 @@
 import chatGroup from '../models/chatModel.js';
-import { imageUploader } from '../libs/cloudinary.js';
-import fs from "fs-extra";
+import users from '../models/users.js';
 
 export const addNewChannelController = async (req, res) => {
      const {title, description, idMember} = req.body;
@@ -16,68 +15,47 @@ export const addNewChannelController = async (req, res) => {
      res.send(response);
 }
 
+export const addMemberController = async (req, res) => {
+    const {channelId, memberEmail} = req.body;
+    const userExist = await users.find({email: memberEmail});
+
+    if(userExist.length !== 0){
+        const memberExist = await chatGroup.find({"members.memberEmail": memberEmail})
+
+        if(memberExist.length !== 0){
+            console.log("usuario ya existe en el grupo");
+        }else{
+            const updateMemberList = await chatGroup.updateOne(
+                {_id: channelId},
+                {
+                    $addToSet:{
+                        members: {
+                            memberEmail: memberEmail
+                        }
+                    }
+                }
+            )
+            res.send(updateMemberList);
+        }
+    }else{
+        res.sendStatus(400);
+    }
+
+}
+
 export const openChannelController = async (req, res) => {
 
     const {channelId} = req.params; 
     const getOldMessages = await chatGroup.find({_id: channelId});
     
     res.send(getOldMessages);
-    /*const {id, idMember, memberName} = req.body;
  
-    const userExist = await chatGroup.find({"members.idMember": idMember});
-
-    if(userExist.length === 0){
-        
-       const getOldMessages = await chatGroup.find({_id: id});
-
-       res.send(getOldMessages);
-
-    }else{
-        if(req.files){
-
-            const result = await imageUploader(req.files.memberPhoto.tempFilePath);
-            await fs.remove(req.files.memberPhoto.tempFilePath);
-
-            const memberPhoto = result.secure_url;
-            console.log(memberPhoto); 
-            const saveMemberInChannel = await chatGroup.updateOne(
-                {_id: id},
-                {
-                    $addToSet:{
-                        message:{ 
-                            memberPhoto: memberPhoto,
-                            memberName: memberName,
-                            messageMember: "Hi Guys"
-                        }
-                    }
-                }
-             )
-
-             res.send(saveMemberInChannel);
-
-            }else{      
-
-                const saveMemberInChannel = await chatGroup.updateOne(
-                    {_id: id},
-                    {
-                        $addToSet:{
-                            message:{ 
-                                memberName: memberName,
-                                messageMember: "Hi Guys"
-                            }
-                        }
-                    }
-                 )
-                res.send(saveMemberInChannel);
-
-            }
-    }*/
 }
 
-export const enterMessageController = async (req, res) => {
+export const sendMessageController = async (req, res) => {
     const {id, memberPhoto, memberName, messageDate, memberMessage} = req.body;
 
-    await chatGroup.updateOne(
+    const a = await chatGroup.updateOne(
         {_id: id},
         {
             $addToSet:{
@@ -91,15 +69,14 @@ export const enterMessageController = async (req, res) => {
         }
     )
     
-    const updateGroupMessages = await chatGroup.find(
+    /*const updateGroupMessages = await chatGroup.find(
         {_id: id},
         {
             $last:{ message }
-        });
+        });*/
 
-    res.send(updateGroupMessages);
+    res.send(a);
 }
-
 
 export const findChannelsController = async (req, res) => {
      const {session} = req.params;
