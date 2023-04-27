@@ -10,10 +10,15 @@ import userRoutes from "./routes/userRoutes.js";
 import socialRoutes from "./routes/socialRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
 import http from 'http';
+import cors from "cors";
 
 const app = express();
 const httpServer = http.createServer(app);
-const io = new webSocketServer(httpServer);
+const io = new webSocketServer(httpServer, {
+    cors: {
+        origin: 'http://localhost:3000'
+    }
+});
 io.on('connection', () => {
     console.log("nueva conexion");
 })
@@ -37,6 +42,7 @@ app.use(cookieSession({
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
 
 app.use(morgan('tiny'));
 

@@ -16,8 +16,13 @@ export const addNewChannelController = async (req, res) => {
      res.send(response);
 }
 
-export const enterInChannelController = async (req, res) => {
-    const {id, idMember, memberName} = req.body;
+export const openChannelController = async (req, res) => {
+
+    const {channelId} = req.params; 
+    const getOldMessages = await chatGroup.find({_id: channelId});
+    
+    res.send(getOldMessages);
+    /*const {id, idMember, memberName} = req.body;
  
     const userExist = await chatGroup.find({"members.idMember": idMember});
 
@@ -66,7 +71,7 @@ export const enterInChannelController = async (req, res) => {
                 res.send(saveMemberInChannel);
 
             }
-    }
+    }*/
 }
 
 export const enterMessageController = async (req, res) => {
@@ -97,7 +102,7 @@ export const enterMessageController = async (req, res) => {
 
 
 export const findChannelsController = async (req, res) => {
-     const {id} = req.params;
-     const allChannels = await chatGroup.find({"members.idMember" : id});
+     const {session} = req.params;
+     const allChannels = await chatGroup.find({"members.idMember" : session});
      res.send(allChannels);
 }

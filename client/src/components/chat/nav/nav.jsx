@@ -1,19 +1,32 @@
 import './nav.css';
-import prueba from "../../../img/prueba.jpg";
 import ChatBody from '../chatBody/chatBody';
 import { useContext, useState } from 'react';
+import ChatContext from '../../../chatContext/chatContext';
 import UserContext from '../../../userContext/userContex';
+
 
 const Nav = () => {
 
     const [newChannelLayout, setNewChannelLayout] = useState(false);
     const {session} = useContext(UserContext);
+    const {addChannelContext, openChannelContext, channels} = useContext(ChatContext);
 
-    const addChannel = (e) => {
+    const addChannel = async (e) => {
         e.preventDefault(e);
-        setNewChannelLayout(!newChannelLayout)
+        const channelPropierties = {
+            title: e.target.elements.channelName.value,
+            description: e.target.elements.channelDescription.value,
+            idMember: session[0]._id
+        };
+        await addChannelContext(channelPropierties);
+        setNewChannelLayout(!newChannelLayout);
     }
-    
+
+    const openChannel = async (e, channelId) => {
+        e.preventDefault();
+        await openChannelContext(channelId);
+    }
+
     const NewChannel = () => {
         return(
                 <div className='form-channel'>
@@ -39,10 +52,10 @@ const Nav = () => {
                         <input name="searchChannel" placeholder='Search channel'></input>
                     </div>
                     <div className='groups mt-6'>
-                        <li className='flex'>
-                            <button className='bg-zinc-800'>FM</button>
-                            <button className='w-full text-left'>FM GROUP MEMB</button>
-                        </li>
+                        {channels.map((c) => <li key={c._id} className='flex'>
+                            <button className='bg-zinc-800'>{c.title.substr(0,2).toUpperCase()}</button>
+                            <button className='w-full text-left' onClick={(e) => openChannel(e, c._id)}>{c.title}</button>
+                        </li>)}
                     </div>
                     {session.map((s) =><div key={s._id} className='user-nav'>
                         <img src={s.photo?.url} alt=""></img>

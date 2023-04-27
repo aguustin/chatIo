@@ -1,8 +1,25 @@
 .group-title{
+    position: relative;
+    display: flex;
     color: rgb(184, 184, 184);
     text-align: left;
     border-bottom: 1px solid black;
+    align-items: center;
 }
+
+.group-title input{
+    position: absolute;
+    right: 1rem;
+    transform: translateX(-1rem);
+    padding: .5rem .5rem;
+    background-color: transparent;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    outline: none;
+    border-bottom: 1px solid rgb(23, 85, 255);
+}
+
 
 .container-message{
     height: 66vh;
