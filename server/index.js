@@ -19,8 +19,10 @@ const io = new webSocketServer(httpServer, {
         origin: 'http://localhost:3000'
     }
 });
-io.on('connection', () => {
-    
+io.on('connection', (socket) => { //ultimo hecho
+    socket.on('newMessage', (msj) => {
+        socket.broadcast.emit('newMessage', msj);
+    })
 })
 connectionDb();
 

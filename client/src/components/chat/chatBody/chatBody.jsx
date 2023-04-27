@@ -1,12 +1,20 @@
 import './chatBody.css';
 import io from "socket.io-client";
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import ChatContext from '../../../chatContext/chatContext';
 
 const socket = io('http://localhost:4000');
 
 const ChatBody = () => {
     const {addMemberContext, sendMessageContext, memberData, messages, setMessage} = useContext(ChatContext);
+
+    useEffect(() => { //ultimo hecho
+        socket.on('newMessage', msj => console.log(msj));
+
+        return () => {
+        socket.off('newMessage', msj => console.log(msj));
+        }
+    })
     
     const addMember = async (e, channelId) => {
         e.preventDefault();
@@ -30,7 +38,7 @@ const ChatBody = () => {
         };
         await sendMessageContext(messageData);
         socket.emit("newMessage", msj);
-        setMessage([...messages, msj]);
+        //setMessage([...messages, msj]);
     }
 
     return(
