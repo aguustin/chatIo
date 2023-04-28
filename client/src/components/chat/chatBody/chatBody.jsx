@@ -7,14 +7,17 @@ const socket = io('http://localhost:4000');
 
 const ChatBody = () => {
     const {addMemberContext, sendMessageContext, memberData, messages, setMessage} = useContext(ChatContext);
+    let fecha = new Date();
+    let day = ["Sunday", "Saturday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+    let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 
     useEffect(() => { //ultimo hecho
-        socket.on('newMessage', msj => console.log(msj));
-
-        return () => {
-        socket.off('newMessage', msj => console.log(msj));
+        const receiveMessage = (messageData) => {
+            setMessage([...messages, messageData]);
+            console.log("sad");
         }
-    })
+    },[]);
     
     const addMember = async (e, channelId) => {
         e.preventDefault();
@@ -30,16 +33,30 @@ const ChatBody = () => {
     const sendMessage = async (e, id) => {
         e.preventDefault();
         const msj = e.target.elements.newMessage.value;
+        const messageDate = `${day[fecha.getDay()]}, ${fecha.getDate()} ${month[fecha.getMonth()]} - ${fecha.getHours()}:${fecha.getMinutes()}`;
         const messageData = {
             id:id,
             memberPhoto: memberData[0].photo.url,
             memberName: memberData[0].name,
-            memberMessage: msj
+            messageDate : messageDate,
+            messageMember: msj
         };
-        await sendMessageContext(messageData);
-        socket.emit("newMessage", msj);
-        //setMessage([...messages, msj]);
+        //await sendMessageContext(messageData);  //este re sirve solo esta comentado para que no se sigan guardando mensaje en la bd
+
+        socket.emit('newMessage', [messageData]);
+        
+        socket.on('receiveMessage', (messageData) => { //ultimo hecho
+            setMessage([...messages]);
+            console.log("llego: ", messages);
+        });
+        
+        return () => {
+        socket.off('receiveMessage', (messageData) => { //ultimo hecho
+            setMessage([...messages]);
+            console.log("llego: ", messages);
+        });
     }
+}
 
     return(
         <div className='w-full'>
@@ -58,7 +75,7 @@ const ChatBody = () => {
                         <div className='message-info'>
                             <li className='flex'>
                                 <p>{mm.memberName}</p>
-                                <p>january at 22:32 AM</p>
+                                <p>{mm.messageDate}</p>
                             </li>
                             <p>{mm.messageMember}</p>
                         </div>

@@ -11,7 +11,7 @@ export const ChatContextProvider = ({children}) => {
    const [channels, setChannels] = useState([]);
    
    const memberData = JSON.parse(localStorage.getItem("credentials"));
-     console.log(memberData);
+
    useEffect(() => {
         (async () => {
             const channelsData = await obtainChannelsRequest(memberData[0]._id);
@@ -33,9 +33,7 @@ export const ChatContextProvider = ({children}) => {
     setMessage(res.data);
    }
 
-   const sendMessageContext = async (msj, messageData) => {
-    socket.emit("newMessage", msj);
-    setMessage([...messages, msj]);
+   const sendMessageContext = async (messageData) => {
     await sendMessageRequest(messageData);
    }
 

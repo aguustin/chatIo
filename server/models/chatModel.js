@@ -10,6 +10,9 @@ const chatSchema = new mongoose.Schema({
     },
     members:[
         {
+        idMember:{
+            type:String
+        },
         memberEmail:{
             type:String
         }

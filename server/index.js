@@ -1,5 +1,5 @@
 import express from "express";
-import { Server as webSocketServer } from "socket.io";
+import { Server as SocketServer } from "socket.io";
 import fileUpload from "express-fileupload";
 import morgan from "morgan";
 import { PORT } from "./config.js";
@@ -14,14 +14,14 @@ import cors from "cors";
 
 const app = express();
 const httpServer = http.createServer(app);
-const io = new webSocketServer(httpServer, {
+const io = new SocketServer(httpServer, {
     cors: {
         origin: 'http://localhost:3000'
     }
 });
 io.on('connection', (socket) => { //ultimo hecho
-    socket.on('newMessage', (msj) => {
-        socket.broadcast.emit('newMessage', msj);
+    socket.on('newMessage', (messageData) => {
+        socket.broadcast.emit('receiveMessage', messageData);
     })
 })
 connectionDb();
