@@ -54,7 +54,7 @@ export const openChannelController = async (req, res) => {
 }
 
 export const sendMessageController = async (req, res) => {
-    const {id, memberPhoto, memberName, messageDate, messageMember} = req.body;
+    const {id, memberPhoto, memberEmail, memberName, messageDate, messageMember} = req.body;
     console.log(id);
     await chatGroup.updateOne(
         {_id: id},
@@ -62,6 +62,7 @@ export const sendMessageController = async (req, res) => {
             $addToSet:{
                 message:{
                     memberPhoto: memberPhoto,
+                    memberEmail: memberEmail,
                     memberName: memberName, 
                     messageDate: messageDate,
                     messageMember: messageMember
@@ -74,7 +75,7 @@ export const sendMessageController = async (req, res) => {
         {_id: id},
         {message: {$elemMatch: { messageMember: messageMember}}}
     )*/
-    res.send({memberPhoto, memberName,  messageDate, messageMember});
+    res.send({memberPhoto, memberEmail, memberName,  messageDate, messageMember});
 }
 
 export const findChannelsController = async (req, res) => {

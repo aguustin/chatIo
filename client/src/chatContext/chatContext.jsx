@@ -30,7 +30,6 @@ export const ChatContextProvider = ({children}) => {
     const res = await openChannelRequest(channelId);
     setMessage(res.data);
     setSocketMessages(res.data[0].message);  //ultimo hecho
-    await setSocketMessages(res.data[0].message);
    }
 
    const sendMessageContext = async (messageData) => {
