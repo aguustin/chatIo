@@ -36,7 +36,7 @@ const ChatBody = () => {
         };
         await sendMessageContext(messageData);
         e.target.reset();
-        await socket.emit('newMessage', messageData);
+        socket.emit('newMessage', messageData); //le saque el await
         socket.on('receiveMessage', (messageData) => { 
             console.log("o: ", newMessages);
             setNewMessages(...socketMessages, messageData);
