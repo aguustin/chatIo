@@ -8,4 +8,4 @@ export const addMemberRequest = (addMember) => axios.post('/addMember', addMembe
 
 export const openChannelRequest = (channelId) => axios.get(`/openChannel/${channelId}`);
 
-export const sendMessageRequest = (messageData) => axios.post('/sendMessage', messageData, console.log(messageData));
+export const sendMessageRequest = (messageData) => axios.post('/sendMessage', messageData);

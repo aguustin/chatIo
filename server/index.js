@@ -13,18 +13,23 @@ import http from 'http';
 import cors from "cors";
 
 const app = express();
+app.use(cors());
 const httpServer = http.createServer(app);
 const io = new SocketServer(httpServer, {
     cors: {
         origin: 'http://localhost:3000'
     }
 });
+
+connectionDb();
+
+
+
 io.on('connection', (socket) => { //ultimo hecho
     socket.on('newMessage', (messageData) => {
         socket.broadcast.emit('receiveMessage', messageData);
     })
 })
-connectionDb();
 
 //settings
 
@@ -44,7 +49,6 @@ app.use(cookieSession({
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(cors());
 
 app.use(morgan('tiny'));
 
