@@ -1,17 +1,16 @@
 import './chatBody.css';
 import io from "socket.io-client";
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect} from 'react';
 import ChatContext from '../../../chatContext/chatContext';
 
 const socket = io();
 
 const ChatBody = () => {
    
-    const {addMemberContext, sendMessageContext, memberData, messages, socketMessages, setSocketMessages} = useContext(ChatContext);
+    const {addMemberContext, sendMessageContext, memberData, messages, newMessages, setNewMessages} = useContext(ChatContext);
     let fecha = new Date();
     let day = ["Sunday", "Saturday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
     let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-    const [newMessages, setNewMessages] = useState([]);
 
     const addMember = async (e, channelId) => {
         e.preventDefault();
@@ -23,8 +22,6 @@ const ChatBody = () => {
     
         await addMemberContext(addMember);
     }
-
-    //console.log("mm:", socketMessages);
 
     const sendMessage = async (e, id) => {
         e.preventDefault();
@@ -40,23 +37,16 @@ const ChatBody = () => {
         };
         await sendMessageContext(messageData);
         e.target.reset();
-        socket.emit('newMessage', socketMessages, messageData);
+        socket.emit('newMessage', newMessages, messageData);
         
-        return () => {
-        socket.off('receiveMessage', (messageData) => { 
-            console.log("o: ", newMessages);
-            setNewMessages(...socketMessages, messageData);
-        });   
-        }
     }
- 
-        socket.on('receiveMessage', (socketId, socketMessages, messageData) => { 
-            console.log("o: ", messageData);
-            console.log("i: ", socketMessages);
-            setNewMessages(socketMessages, messageData);
+    useEffect(() => {
+        socket.on('receiveMessage', (socketId, newMessages, messageData) => { 
+            setNewMessages([...newMessages, messageData]);
         });
-  
-   console.log("new: ", newMessages);
+    }, []);
+       
+   console.log("mm:", newMessages);
 
     return(
         <div className='w-full'>
@@ -67,9 +57,8 @@ const ChatBody = () => {
                        <input name="addMember" type="email" placeholder=' '></input>
                     </form>
                 </div>)}
-                <div className='container-message'>
-                    {socketMessages.map((mm) => {
-                     return mm.memberEmail !== memberData.email ? (<div className='message'> 
+                <div className='container-message'>     
+                {newMessages.map((mm) => <div className='message'> 
                         <div>
                             <img src={mm.memberPhoto} alt=""></img>
                         </div>
@@ -80,19 +69,7 @@ const ChatBody = () => {
                             </li>
                             <p>{mm.messageMember}</p>
                         </div>
-                    </div>) : (
-                     <div className='message-session'> 
-                        <div>
-                            <img src={mm.memberPhoto} alt=""></img>
-                        </div>
-                        <div className='message-info-session'>
-                            <li className='flex'>
-                                <p>{mm.memberName}</p>
-                                <p>{mm.messageDate}</p>
-                            </li>
-                            <p>{mm.messageMember}</p>
-                        </div>
-                    </div>)} )}
+                    </div>)}
                 </div>
                 {messages.map((m) => <div key={m._id} className='writeMessage'>
                     <form onSubmit={(e) => sendMessage(e, m._id)}>

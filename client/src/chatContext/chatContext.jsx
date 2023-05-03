@@ -7,6 +7,7 @@ export const ChatContextProvider = ({children}) => {
    const [messages, setMessage] = useState([]);
    const [channels, setChannels] = useState([]);
    const [socketMessages, setSocketMessages] = useState([]);
+   const [newMessages, setNewMessages] = useState([]);
    
    const memberData = JSON.parse(localStorage.getItem("credentials"));
 
@@ -29,7 +30,8 @@ export const ChatContextProvider = ({children}) => {
    const openChannelContext = async (channelId) => {
     const res = await openChannelRequest(channelId);
     setMessage(res.data);
-    setSocketMessages(res.data[0].message); 
+    //setSocketMessages(res.data[0].message); 
+    setNewMessages(res.data[0].message);
    }
 
    const sendMessageContext = async (messageData) => {
@@ -38,7 +40,7 @@ export const ChatContextProvider = ({children}) => {
    }
 
    return(
-    <ChatContext.Provider value={{addChannelContext, addMemberContext, openChannelContext, sendMessageContext, memberData, channels, messages, socketMessages, setSocketMessages}}>{children}</ChatContext.Provider>
+    <ChatContext.Provider value={{addChannelContext, addMemberContext, openChannelContext, sendMessageContext, memberData, channels, messages, socketMessages, setSocketMessages, newMessages, setNewMessages}}>{children}</ChatContext.Provider>
    )
 }
 
