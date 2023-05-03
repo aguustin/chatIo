@@ -1,16 +1,18 @@
 import './chatBody.css';
 import io from "socket.io-client";
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ChatContext from '../../../chatContext/chatContext';
 
-const socket = io.connect('http://localhost:4000');
+const socket = io();
 
 const ChatBody = () => {
+   
     const {addMemberContext, sendMessageContext, memberData, messages, socketMessages, setSocketMessages} = useContext(ChatContext);
     let fecha = new Date();
     let day = ["Sunday", "Saturday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
     let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
     const [newMessages, setNewMessages] = useState([]);
+
     const addMember = async (e, channelId) => {
         e.preventDefault();
        
@@ -21,7 +23,9 @@ const ChatBody = () => {
     
         await addMemberContext(addMember);
     }
-    console.log("mm:", socketMessages);
+
+    //console.log("mm:", socketMessages);
+
     const sendMessage = async (e, id) => {
         e.preventDefault();
         const msj = e.target.elements.newMessage.value;
@@ -36,11 +40,7 @@ const ChatBody = () => {
         };
         await sendMessageContext(messageData);
         e.target.reset();
-        socket.emit('newMessage', messageData); //le saque el await
-        socket.on('receiveMessage', (messageData) => { 
-            console.log("o: ", newMessages);
-            setNewMessages(...socketMessages, messageData);
-        });
+        socket.emit('newMessage', socketMessages, messageData);
         
         return () => {
         socket.off('receiveMessage', (messageData) => { 
@@ -48,7 +48,15 @@ const ChatBody = () => {
             setNewMessages(...socketMessages, messageData);
         });   
         }
-}
+    }
+ 
+        socket.on('receiveMessage', (socketId, socketMessages, messageData) => { 
+            console.log("o: ", messageData);
+            console.log("i: ", socketMessages);
+            setNewMessages(socketMessages, messageData);
+        });
+  
+   console.log("new: ", newMessages);
 
     return(
         <div className='w-full'>

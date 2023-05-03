@@ -26,8 +26,8 @@ connectionDb();
 
 
 io.on('connection', (socket) => { //ultimo hecho
-    socket.on('newMessage', (messageData) => {
-        socket.broadcast.emit('receiveMessage', messageData);
+    socket.on('newMessage', (socketMessages, messageData) => {
+        socket.broadcast.emit('receiveMessage', socket.id, socketMessages, messageData);
     })
 })
 
