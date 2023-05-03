@@ -1,16 +1,20 @@
 import './chatBody.css';
 import io from "socket.io-client";
-import { useContext, useEffect} from 'react';
+import { useContext, useEffect, useState} from 'react';
 import ChatContext from '../../../chatContext/chatContext';
+import prueba from '../../../img/prueba.jpg';
 
 const socket = io();
 
 const ChatBody = () => {
    
     const {addMemberContext, sendMessageContext, memberData, messages, newMessages, setNewMessages} = useContext(ChatContext);
+    const [membersLayout, setMembersLayout] = useState(false);
     let fecha = new Date();
     let day = ["Sunday", "Saturday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
     let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+    console.log(membersLayout);
 
     const addMember = async (e, channelId) => {
         e.preventDefault();
@@ -48,14 +52,58 @@ const ChatBody = () => {
        
    console.log("mm:", newMessages);
 
+   const MembersLayout = () => {
+
     return(
-        <div className='w-full'>
+        <div>
+            <div className='membersLayout'>
+                <div>
+                    <p>Members</p>
+                </div>
+                <ul>
+                    <li>
+                        <img src={prueba} alt=""></img>
+                        <label>Nombre del usuario</label>
+                    </li>
+                    <li>
+                        <img src={prueba} alt=""></img>
+                        <label>Nombre del usuario</label>
+                    </li>
+                    <li>
+                        <img src={prueba} alt=""></img>
+                        <label>Nombre del usuario</label>
+                    </li>
+                    <li>
+                        <img src={prueba} alt=""></img>
+                        <label>Nombre del usuario</label>
+                    </li>
+                    <li>
+                        <img src={prueba} alt=""></img>
+                        <label>Nombre del usuario</label>
+                    </li>
+                    <li>
+                        <img src={prueba} alt=""></img>
+                        <label>Nombre del usuario</label>
+                    </li>
+                </ul>
+                <div>
+                    <p>Channels name</p>
+                </div>
+        </div>
+    </div>
+    )   
+   
+   }
+
+    return(
+        <div className='chatBody w-full'>
             <div>
             {messages.map((m) => <div key={m._id} className='group-title'>
                     <p>{m.title}</p>
                     <form onSubmit={(e) => addMember(e, m._id)}>
                        <input name="addMember" type="email" placeholder=' '></input>
                     </form>
+                    <button onClick={() => setMembersLayout(!membersLayout)}>See Members</button>
                 </div>)}
                 <div className='container-message'>     
                 {newMessages.map((mm) => <div className='message'> 
@@ -77,6 +125,7 @@ const ChatBody = () => {
                     </form>
                 </div>)}
             </div>
+                {membersLayout ? <MembersLayout/> : ''}
         </div>
     )
 }
