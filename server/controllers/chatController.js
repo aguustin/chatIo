@@ -85,6 +85,13 @@ export const findChannelsController = async (req, res) => {
      res.send(allChannels);
 }
 
+export const searchChannelsController = async (req, res) => {
+    const {search} = req.body;
+    console.log("?", search);  //no llega bien aca, el problema es aca en el controller
+    const response = await chatGroup.find({ title: { '$regex': search, '$options': 'i' } });
+    res.send(response);
+}
+
 export const deleteAllMessages = async (req, res) => {
     await chatGroup.deleteMany({});
     res.sendStatus(200);

@@ -26,9 +26,9 @@
 }
 
 .container-message{
-    height: 66vh;
+    height: 76vh;
     width: 86%;
-    margin: 3rem;
+    margin: 2rem;
     overflow-y: scroll;
 }
 

@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { obtainChannelsRequest, addChannelRequest, addMemberRequest, openChannelRequest, sendMessageRequest } from "../api/chatRequest";
+import { obtainChannelsRequest, addChannelRequest, addMemberRequest, openChannelRequest, sendMessageRequest, searchChannelRequest } from "../api/chatRequest";
 
 const ChatContext = createContext();
 
@@ -16,6 +16,7 @@ export const ChatContextProvider = ({children}) => {
             const channelsData = await obtainChannelsRequest(memberData[0]._id);
             setChannels(channelsData.data);
         })();
+        // eslint-disable-next-line
    }, [])
 
    const addChannelContext = async (channelPropierties) => {
@@ -39,8 +40,25 @@ export const ChatContextProvider = ({children}) => {
     setSocketMessages([...socketMessages, res.data]);
    }
 
+   const searchChannelContext = async (search) => {
+     const res = await searchChannelRequest(search);
+     setChannels(res.data);
+   }
+
    return(
-    <ChatContext.Provider value={{addChannelContext, addMemberContext, openChannelContext, sendMessageContext, memberData, channels, messages, socketMessages, setSocketMessages, newMessages, setNewMessages}}>{children}</ChatContext.Provider>
+    <ChatContext.Provider value={{addChannelContext, 
+     addMemberContext, 
+     openChannelContext, 
+     sendMessageContext, 
+     memberData, 
+     channels, 
+     messages, 
+     socketMessages, 
+     setSocketMessages, 
+     newMessages, 
+     setNewMessages,
+     searchChannelContext
+}}>{children}</ChatContext.Provider>
    )
 }
 

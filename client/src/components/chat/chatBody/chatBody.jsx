@@ -1,6 +1,6 @@
 import './chatBody.css';
 import io from "socket.io-client";
-import { useContext, useEffect, useState} from 'react';
+import { useContext, useEffect} from 'react';
 import ChatContext from '../../../chatContext/chatContext';
 
 const socket = io();
@@ -8,12 +8,9 @@ const socket = io();
 const ChatBody = () => {
    
     const {addMemberContext, sendMessageContext, memberData, messages, newMessages, setNewMessages} = useContext(ChatContext);
-    const [membersLayout, setMembersLayout] = useState(false);
     let fecha = new Date();
     let day = ["Sunday", "Saturday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
     let month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-    console.log(membersLayout);
 
     const addMember = async (e, channelId) => {
         e.preventDefault();
@@ -47,7 +44,8 @@ const ChatBody = () => {
         socket.on('receiveMessage', (socketId, newMessages, messageData) => { 
             setNewMessages([...newMessages, messageData]);
         });
-    }, []);
+        // eslint-disable-next-line
+    }, []); 
        
    console.log("mm:", newMessages);
 
