@@ -62,8 +62,11 @@ const Nav = () => {
                          <p>{s.name}</p>
                     </div>)}
                 </nav>
-                    <ChatBody session={session[0]}/>
+                <div>
+                <ChatBody session={session[0]}/>
                     {newChannelLayout ? <NewChannel/> : ''}
+                </div>
+                    
             </div>
         </div>
     )
