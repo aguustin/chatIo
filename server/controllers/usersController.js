@@ -126,3 +126,8 @@ export const editUser = async (req, res) => {
         }
 
 }
+
+export const findUsersController = async (req, res) => {
+    const response = await users.find({});
+    res.send(response);
+}

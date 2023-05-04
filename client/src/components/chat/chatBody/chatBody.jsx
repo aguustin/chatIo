@@ -2,7 +2,6 @@ import './chatBody.css';
 import io from "socket.io-client";
 import { useContext, useEffect, useState} from 'react';
 import ChatContext from '../../../chatContext/chatContext';
-import prueba from '../../../img/prueba.jpg';
 
 const socket = io();
 
@@ -52,49 +51,6 @@ const ChatBody = () => {
        
    console.log("mm:", newMessages);
 
-   const MembersLayout = () => {
-
-    return(
-        <div>
-            <div className='membersLayout'>
-                <div>
-                    <p>Members</p>
-                </div>
-                <ul>
-                    <li>
-                        <img src={prueba} alt=""></img>
-                        <label>Nombre del usuario</label>
-                    </li>
-                    <li>
-                        <img src={prueba} alt=""></img>
-                        <label>Nombre del usuario</label>
-                    </li>
-                    <li>
-                        <img src={prueba} alt=""></img>
-                        <label>Nombre del usuario</label>
-                    </li>
-                    <li>
-                        <img src={prueba} alt=""></img>
-                        <label>Nombre del usuario</label>
-                    </li>
-                    <li>
-                        <img src={prueba} alt=""></img>
-                        <label>Nombre del usuario</label>
-                    </li>
-                    <li>
-                        <img src={prueba} alt=""></img>
-                        <label>Nombre del usuario</label>
-                    </li>
-                </ul>
-                <div>
-                    <p>Channels name</p>
-                </div>
-        </div>
-    </div>
-    )   
-   
-   }
-
     return(
         <div className='chatBody w-full'>
             <div>
@@ -103,7 +59,6 @@ const ChatBody = () => {
                     <form onSubmit={(e) => addMember(e, m._id)}>
                        <input name="addMember" type="email" placeholder=' '></input>
                     </form>
-                    <button onClick={() => setMembersLayout(!membersLayout)}>See Members</button>
                 </div>)}
                 <div className='container-message'>     
                 {newMessages.map((mm) => <div className='message'> 
@@ -125,7 +80,6 @@ const ChatBody = () => {
                     </form>
                 </div>)}
             </div>
-                {membersLayout ? <MembersLayout/> : ''}
         </div>
     )
 }

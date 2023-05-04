@@ -13,6 +13,9 @@ const chatSchema = new mongoose.Schema({
         idMember:{
             type:String
         },
+        profilePhoto:{
+            type:String
+        },
         memberEmail:{
             type:String
         }

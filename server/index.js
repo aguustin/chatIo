@@ -23,8 +23,6 @@ const io = new SocketServer(httpServer, {
 
 connectionDb();
 
-
-
 io.on('connection', (socket) => { //ultimo hecho
     socket.on('newMessage', (newMessages, messageData) => {
         //socket.broadcast.emit('receiveMessage', socket.id, newMessages, messageData);

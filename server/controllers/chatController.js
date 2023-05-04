@@ -2,12 +2,15 @@ import chatGroup from '../models/chatModel.js';
 import users from '../models/users.js';
 
 export const addNewChannelController = async (req, res) => {
-     const {title, description, idMember} = req.body;
+     const {title, description, idMember, profilePhoto} = req.body;
 
      const newChannel = await new chatGroup({
         title: title,
         description: description,
-        members: { idMember : idMember}
+        members: { 
+        idMember : idMember,
+        profilePhoto: profilePhoto
+        }
      });
 
      const response = await newChannel.save();
@@ -32,6 +35,7 @@ export const addMemberController = async (req, res) => {
                     $addToSet:{
                         members: {
                             idMember: userExist[0]._id.valueOf(),
+                            profilePhoto: userExist[0].photo.url,
                             memberEmail: memberEmail
                         }
                     }
@@ -72,10 +76,6 @@ export const sendMessageController = async (req, res) => {
         }
     )
     
-    /*const updateGroupMessages = await chatGroup.find(
-        {_id: id},
-        {message: {$elemMatch: { messageMember: messageMember}}}
-    )*/
     res.send({memberPhoto, memberEmail, memberName,  messageDate, messageMember});
 }
 

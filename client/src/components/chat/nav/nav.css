@@ -10,9 +10,21 @@
 
 .chat-background > div{
     width: 90%;
-    min-width: 900px;
+    min-width: 400px;
     height: 90%;
     background-color: rgb(24, 24, 24);
+}
+
+.openNavLabel{
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
+}
+
+#openNav{
+    display: none;
+    height: 200px;
 }
 
 .nav{
@@ -98,6 +110,7 @@
     border-radius: 9px;
     text-align: left;
     background-color: rgb(17, 17, 17);
+    z-index: 3;
 }
 
 .form-channel > p{
@@ -119,10 +132,45 @@
 .form-channel form textarea{
     margin-top: 1rem;
 }
+@media screen and (max-height:980px) {
+
+.chat-background > div{
+    height: 100%;
+    width: 100%;
+}
+}
 
 @media screen and (max-width:1097px) {
 
     .nav{
-        transform: translateX(-22vw);
+        position: absolute;
+        left: 0;
+        transform: translateX(-260px);
+        z-index: 2;
+    }
+
+    .chat-background > div{
+        height: 100%;
+        width: 100%;
+    }
+
+    #openNav:checked ~ .nav{
+        transform: translateX(0px);
+        transition: .3s;
+    }
+
+    #openNav:not(:checked) ~ .nav{
+        transform: translateX(-260px);
+        transition: .3s;
+    }
+
+    #openNav:checked ~ .openNavLabel{
+        transform: translateX(260px);
+        transition: .3s;
+    }
+
+    #openNav:not(:checked) ~ .openNavLabel{
+        transform: translateX(0px);
+        transition: .3s;
     }
 }
