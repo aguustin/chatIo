@@ -33,6 +33,7 @@ export const ChatContextProvider = ({children}) => {
     setMessage(res.data);
     //setSocketMessages(res.data[0].message); 
     setNewMessages(res.data[0].message);
+    setChannels(res.data);
    }
 
    const sendMessageContext = async (messageData) => {

@@ -167,12 +167,12 @@
     }
 
     #openNav:not(:checked) ~ .nav{
-        transform: translateX(-260px);
+        transform: translateX(-350px);
         transition: .3s;
     }
 
     #openNav:checked ~ .openNavLabel{
-        transform: translateX(260px);
+        transform: translateX(350px);
         transition: .3s;
     }
 

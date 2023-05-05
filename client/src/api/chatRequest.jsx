@@ -10,4 +10,4 @@ export const openChannelRequest = (channelId) => axios.get(`/openChannel/${chann
 
 export const sendMessageRequest = (messageData) => axios.post('/sendMessage', messageData);
 
-export const searchChannelRequest = (search) => axios.post('/searchChannel', search);
+export const searchChannelRequest = (searching) => axios.post('/searchChannel', searching);

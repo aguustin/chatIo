@@ -71,8 +71,10 @@ const Nav = () => {
 
     const searchChannel = async (e) => {
         e.preventDefault();
-        const search = e.target.elements.search.value;
-        await searchChannelContext(search);
+        const searching = {
+            search: e.target.elements.search.value
+        }
+        await searchChannelContext(searching);
     }
     
 
