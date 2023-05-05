@@ -24,11 +24,17 @@
   top: 0;
   left: 0;
   cursor: pointer;
+  background-color: red;
+  z-index: 1;
+  height: 0px;
+}
+
+.openNavLabel img{
+    width: 40px;
 }
 
 #openNav{
     display: none;
-    height: 200px;
 }
 
 .nav{
@@ -39,6 +45,7 @@
     background-color: rgb(19, 19, 19);
     color: white;
     font-weight: 600;
+    z-index: 2;
 }
 
 .nav > div{
