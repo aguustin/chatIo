@@ -192,3 +192,10 @@
         transition: .3s;
     }
 }
+
+@media screen and (max-height:592px) {
+    .openNavLabel img{
+        width: 20px;
+        bottom:23px;
+    }
+}

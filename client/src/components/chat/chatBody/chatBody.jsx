@@ -51,7 +51,6 @@ const ChatBody = () => {
 
     return(
         <div className='chatBody w-full'>
-         
             {messages.map((m) => <div key={m._id} className='group-title'>
                     <p>{m.title}</p>
                     <form onSubmit={(e) => addMember(e, m._id)}>
@@ -77,7 +76,6 @@ const ChatBody = () => {
                         <input name="newMessage" type="text" placeholder='Tape a new message'></input>
                     </form>
                 </div>)}
-            
         </div>
     )
 }
