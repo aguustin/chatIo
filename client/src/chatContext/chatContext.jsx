@@ -13,11 +13,15 @@ export const ChatContextProvider = ({children}) => {
 
    useEffect(() => {
         (async () => {
-            const channelsData = await obtainChannelsRequest(memberData[0]._id);
-            setChannels(channelsData.data);
+            await obtainChannelContext();
         })();
         // eslint-disable-next-line
    }, [])
+
+   const obtainChannelContext = async () => {
+     const channelsData = await obtainChannelsRequest(memberData[0]._id);
+     setChannels(channelsData.data);
+   }
 
    const addChannelContext = async (channelPropierties) => {
         const res = await addChannelRequest(channelPropierties);
@@ -47,7 +51,9 @@ export const ChatContextProvider = ({children}) => {
    }
 
    return(
-    <ChatContext.Provider value={{addChannelContext, 
+    <ChatContext.Provider value={{
+     obtainChannelContext,
+     addChannelContext, 
      addMemberContext, 
      openChannelContext, 
      sendMessageContext, 

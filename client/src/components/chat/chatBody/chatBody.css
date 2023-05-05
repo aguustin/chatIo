@@ -5,11 +5,13 @@
 
 .group-title{
     position: relative;
+    margin-top: -3.5rem;
     display: flex;
     color: rgb(184, 184, 184);
     text-align: left;
     border-bottom: 1px solid black;
     align-items: center;
+    
 }
 
 .group-title form input{
@@ -89,6 +91,7 @@
  margin-left: 30px;
 }
 
+
 .writeMessage input{
     width: 90%;
     background-color: rgb(36, 36, 36);
@@ -142,12 +145,37 @@
     border-radius: 100%;
 }
 
-@media screen and (max-height:980px) {
-    
+@media screen and (max-width:1097px){
+
+    .writeMessage input{
+        margin-top: 3rem;
+    }
+}
+
+@media screen and (min-width:1098px) and (max-height:570px) {
+    .writeMessage input{
+        margin-bottom: 7rem;
+    }
+}
+
+@media screen and (max-width:1098px) and (max-height:400px) {
+    .writeMessage input{
+        margin-bottom: 7rem;
+    }
+}
+
+@media screen and (max-width:1097px) and (max-height:500px) {
+
+    .writeMessage input{
+        margin-bottom: 5rem;
+    }
 }
 
 
+
 @media screen and (max-width:1097px) {
+
+    
 
     .container-message{
         height: 70vh;

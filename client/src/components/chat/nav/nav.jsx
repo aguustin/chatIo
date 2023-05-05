@@ -10,7 +10,7 @@ const Nav = () => {
     const [newChannelLayout, setNewChannelLayout] = useState(false);
     const {session} = useContext(UserContext);
     const [seeMember, seeMembersLayout] = useState(false);
-    const {addChannelContext, openChannelContext, channels, searchChannelContext} = useContext(ChatContext);
+    const { obtainChannelContext, addChannelContext, openChannelContext, channels, searchChannelContext} = useContext(ChatContext);
 
     const addChannel = async (e) => {
         e.preventDefault(e);
@@ -43,11 +43,19 @@ const Nav = () => {
         )
     }
 
+    const a = async () => {
+        seeMembersLayout(!seeMember);
+
+        await obtainChannelContext();
+    }
+
     const SeeMembers = () => { //ultimo hecho
+
+
         return(
             <nav className='nav decoration-white'>
                    <div className='addChannel flex'>
-                       <button onClick={() => seeMembersLayout(!seeMember)}>a ALL CHANNELS</button>
+                       <button onClick={() => a()}>a ALL CHANNELS</button>
                    </div>
                    {channels.map((c) => <div key={c._id} className='groups text-left'>
                        <div className='ml-4'>{c.title.toUpperCase()}</div>
@@ -108,7 +116,7 @@ const Nav = () => {
         <div className='chat-background'>
             <div className='flex justify-center items-center relative'>
                     <input id="openNav" type='checkbox' name="openNav"></input>
-                    <label className='openNavLabel' for="openNav"><img src={menu} alt=""></img></label>
+                    <label className='openNavLabel' htmlFor="openNav"><img src={menu} alt=""></img></label>
                 {   seeMember ? <SeeMembers/> : <SeeChannels/> }
                     <ChatBody session={session[0]}/>
                     {newChannelLayout ? <NewChannel/> : ''}
