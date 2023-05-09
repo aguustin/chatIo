@@ -2,6 +2,7 @@ import './chatBody.css';
 import io from "socket.io-client";
 import { useContext, useEffect} from 'react';
 import ChatContext from '../../../chatContext/chatContext';
+import notUser from '../../../img/notUser.jpg';
 
 const socket = io();
 
@@ -45,9 +46,7 @@ const ChatBody = () => {
             setNewMessages([...newMessages, messageData]);
         });
         // eslint-disable-next-line
-    }, []); 
-       
-   console.log("mm:", newMessages);
+    }, []);    
 
     return(
         <div className='chatBody w-full'>
@@ -58,9 +57,9 @@ const ChatBody = () => {
                     </form>
                 </div>)}
                 <div className='container-message'>     
-                {newMessages.map((mm) => <div key={mm._id} className='message'> 
+                {newMessages.map((mm, i) => <div key={mm._id} className='message'> 
                         <div>
-                            <img src={mm.memberPhoto} alt=""></img>
+                            { mm.memberPhoto ? <img src={mm.memberPhoto} alt=""></img> : <img src={notUser} alt=""></img> }
                         </div>
                         <div className='message-info'>
                             <li className='flex'>

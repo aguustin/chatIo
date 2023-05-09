@@ -30,9 +30,6 @@ export const loginUser = async (req, res) => {
 
             }
         }else{
-
-            console.log("The email is not found");
-    
             res.send(400);
         }
 
@@ -46,14 +43,10 @@ export const registerUser = async (req, res) => {
 
     if(userExist.length !== 0){
 
-        console.log("usuario ya existe");
-
         res.sendStatus(201);
 
     }else{
-
         const salt = bcrypt.genSaltSync(10);
-
         const hash = await bcrypt.hash(password, salt);
         
         const newUser = await new users({
@@ -62,9 +55,7 @@ export const registerUser = async (req, res) => {
             phone: phone,
             email: email,
             password:hash
-        })
-        console.log("registrado");
-        
+        })       
         await newUser.save();
     
         res.send(newUser);
@@ -92,7 +83,6 @@ export const editUser = async (req, res) => {
     const id = req.params.id;
     const {name, bio, phone, email, password } = req.body;
     let photo;
-    console.log(req.files.photo);
 
     if(req.files){
 

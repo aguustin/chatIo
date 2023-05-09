@@ -5,10 +5,7 @@ const DetailsBody = (user) => {
 
     const [detailsBody, setDetailsBody] = useState(true);
     const [image, setImage] = useState([]);
-
     const {editUserContext} = useContext(UserContext);
-
-    
 
     const edit = async (e, id) => {
         e.preventDefault();
@@ -18,8 +15,6 @@ const DetailsBody = (user) => {
         const phone = e.target.elements.phone.value;
         const email = e.target.elements.email.value;
         const password = e.target.elements.password.value;
-
-        console.log(photo);
       
         const editUserOb = {
             photo: photo,
@@ -109,10 +104,9 @@ const DetailsBody = (user) => {
     }
 
     return(
-        <div>
+        <div className='detailsBody'>
                { detailsBody ? <SeeInfo/> : <EditInfo/> }
         </div>
-     
     )
 
    

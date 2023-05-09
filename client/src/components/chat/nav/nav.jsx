@@ -4,6 +4,7 @@ import { useContext, useState } from 'react';
 import ChatContext from '../../../chatContext/chatContext';
 import UserContext from '../../../userContext/userContex';
 import menu from '../../../img/menu.png';
+import notUser from '../../../img/notUser.jpg';
 
 const Nav = () => {
 
@@ -45,12 +46,10 @@ const Nav = () => {
 
     const a = async () => {
         seeMembersLayout(!seeMember);
-
         await obtainChannelContext();
     }
 
     const SeeMembers = () => { //ultimo hecho
-
 
         return(
             <nav className='nav decoration-white'>
@@ -63,7 +62,7 @@ const Nav = () => {
                        <div>
                        <p>MEMBERS</p>
                        {channels[0].members.map((cm) => <li key={cm._id}  className='flex items-center'>
-                           <img src={cm.profilePhoto} alt=""></img>
+                           {cm.profilePhoto ? <img src={cm.profilePhoto} alt=""></img> : <img src={notUser} alt=""></img>}
                            <label>{cm.memberEmail}</label>
                        </li>)}
                        </div>
@@ -117,7 +116,7 @@ const Nav = () => {
             <div className='flex justify-center items-center relative'>
                     <input id="openNav" type='checkbox' name="openNav"></input>
                     <label className='openNavLabel' htmlFor="openNav"><img src={menu} alt=""></img></label>
-                {   seeMember ? <SeeMembers/> : <SeeChannels/> }
+                    { seeMember ? <SeeMembers/> : <SeeChannels/> }
                     <ChatBody session={session[0]}/>
                     {newChannelLayout ? <NewChannel/> : ''}
             </div>

@@ -1,16 +1,53 @@
 .edit{
+    position: absolute;
     width: 30vw;
     min-width: 450px;
+    color: rgb(23, 85, 255);
+    font-weight: 600;
+    border: 1px solid rgb(23, 85, 255);
+    border-radius: 20px;
+    top:10%;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
+.form-input-edit{
+    margin-top: 1rem;
+}
 
+.form-input-edit input, textarea{
+    margin-top: .5rem;
+}
+
+.form-input-edit input, textarea{
+    width: 90%;
+    padding: .5rem;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid rgb(194, 194, 194);
+    outline: none;
+}
+
+.form-input-edit label{
+    text-align: left;
+}
 
 .loginRegister{
     margin-top: 13vh;
     width: 28vw;
     min-width: 450px;
-    border: 1px solid rgb(224, 153, 153);
+    border: 1px solid rgb(23, 85, 255);
     padding: 1.5rem 2.5rem;
+    background-color: rgb(36, 36, 36);
+    font-weight: 600;
+}
+
+.lr{
+    color: rgb(23, 85, 255);
+}
+
+.lr p{
+    margin-top: 1rem;
 }
 
 .form-input, .form-button{
@@ -18,7 +55,9 @@
 }
 
 .form-input input{
-    color: rgb(214, 214, 214);
+    background-color: rgb(36, 36, 36);
+    color: rgb(23, 85, 255);
+    font-weight: 600;
     outline: none;
 }
 
@@ -27,7 +66,7 @@
 }
 
 .form-button{
-    background-color: rgb(79, 79, 214);
+    background-color: rgb(23, 85, 255);
     color: white;
     padding: .5rem ;
 }
@@ -42,5 +81,9 @@
 
 .loginRegister > div b{
     font-size: 19px;
+}
+
+.social button{
+    color: rgb(23, 85, 255);
 }
 

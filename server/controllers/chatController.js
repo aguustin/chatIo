@@ -4,18 +4,16 @@ import users from '../models/users.js';
 export const addNewChannelController = async (req, res) => {
      const {title, description, idMember, profilePhoto} = req.body;
 
-     const newChannel = await new chatGroup({
-        title: title,
-        description: description,
-        members: { 
-        idMember : idMember,
-        profilePhoto: profilePhoto
-        }
-     });
-
-     const response = await newChannel.save();
-
-     res.send(response);
+        const newChannel = await new chatGroup({
+            title: title,
+            description: description,
+            members: { 
+            idMember : idMember,
+            profilePhoto: profilePhoto
+            }
+         });
+         const response = await newChannel.save();
+         res.send(response);
 }
 
 export const addMemberController = async (req, res) => {
@@ -87,7 +85,6 @@ export const findChannelsController = async (req, res) => {
 
 export const searchChannelsController = async (req, res) => {
     const {search} = req.body;
-    console.log("?", search);  //no llega bien aca, el problema es aca en el controller
     const response = await chatGroup.find({ title: { '$regex': search, '$options': 'i' } });
     res.send(response);
 }

@@ -70,6 +70,3 @@ export const ChatContextProvider = ({children}) => {
 }
 
 export default ChatContext;
-
-/*traer solo los mensajes de la base de datos y guardalos en un nuevo estado llamado "oldMessages" y que solo traiga los "messages" de la base de datos, luego
- agregarle a los socketMessage los oldMessages mas el nuevo mensaje retornado por sendMessageRequest*/

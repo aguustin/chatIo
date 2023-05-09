@@ -1,11 +1,7 @@
-
 import { Link } from 'react-router-dom';
 import devchallenge from '../../img/devchallenges.svg';
 
-
 const Navigation = () => {
-
-
     return(
         <div className="flex">
             <div>

@@ -1,7 +1,6 @@
 import './App.css';
 import DetailsEdit from './components/detailsEdit/detailsEdit';
 import LoginRegister from './components/loginRegister/loginRegister';
-import Navigation from './components/navigation/navigation';
 import SignOut from './components/signOut/signOut';
 import Nav from './components/chat/nav/nav';
 import {BrowserRouter, Routes, Route } from 'react-router-dom';

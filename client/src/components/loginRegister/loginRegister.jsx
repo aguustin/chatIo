@@ -71,32 +71,31 @@ const LoginRegister = () => {
           return(
               
              
-              <div className='rounded-3xl'>
-                 <button> Back</button>
+              <div>
+                 <button>Back</button>
               <div className='edit mx-auto'>
                   <h2>Change Info</h2>
                   <p>Changes will be reflected to every service</p>
   
                   <form onSubmit={(e) => registerUser(e)}>
-                
-                      <div className='form-input mt-6'>
+                      <div className='form-input-edit mt-6'>
                           <label for="name">name</label><br></br>
                           <input type="text" name="name" placeholder="enter your name..."></input>
                       </div>
-                      <div className="form-input">
+                      <div className="form-input-edit">
                           <label for="bio">bio</label><br></br>
                           <textarea type="text" name="bio" placeholder="enter your bio..."></textarea>
                       </div>
-                      <div className="form-input">
+                      <div className="form-input-edit">
                           <label for="phone">phone</label><br></br>
                           <input type="text" name="phone" placeholder="enter your phone..."></input>
                       </div>
-                      <div className="form-input">
+                      <div className="form-input-edit">
                           <label for="email">email</label><br></br>
                           <input type="text" name="email" placeholder="enter your email..."></input>
                       </div>
-                      <div className="form-input">
-                          <label for="password">password</label><br></br>
+                      <div className="form-input-edit">
+                          <label for="password">password</label>
                           <input type="password" name="password" placeholder="enter your new password..."></input>
                       </div>
   
@@ -130,11 +129,10 @@ const LoginRegister = () => {
       const Login = () => {
         return(
             <div className="loginRegister mx-auto rounded-3xl">
-                <div className='text-left mx-auto'>
+                <div className='lr text-center mx-auto'>
                     <img src={devchallenges} alt=""></img>
                     {changeForm ? <p>Join thousands of leaners from around the world</p> : <p>Login</p>}
-                    {changeForm ? <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-                    lorem ipsum lorem </p> : null}
+                    {changeForm ? <p>WELCOME TO CHATIO</p> : null}
                 </div>
                 <form onSubmit={(e) => enter(e)}>
                     <div className="form-input">
