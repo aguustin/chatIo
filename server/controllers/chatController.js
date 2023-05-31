@@ -2,14 +2,15 @@ import chatGroup from '../models/chatModel.js';
 import users from '../models/users.js';
 
 export const addNewChannelController = async (req, res) => {
-     const {title, description, idMember, profilePhoto} = req.body;
+     const {title, description, idMember, profilePhoto, memberEmail} = req.body;
 
         const newChannel = await new chatGroup({
             title: title,
             description: description,
             members: { 
             idMember : idMember,
-            profilePhoto: profilePhoto
+            profilePhoto: profilePhoto,
+            memberEmail: memberEmail
             }
          });
          const response = await newChannel.save();
@@ -21,13 +22,12 @@ export const addMemberController = async (req, res) => {
     const userExist = await users.find({email: memberEmail});
 
     if(userExist){
-        const memberExist = await chatGroup.find({"members.memberEmail": memberEmail})
-
-        if(memberExist === true){
+        const memberExist = await chatGroup.find({_id: channelId, "members.memberEmail": memberEmail});
+        if(memberExist.length !== 0){
             console.log("usuario ya existe en el grupo");
             
         }else{
-            const updateMemberList = await chatGroup.updateOne(
+            await chatGroup.updateOne(
                 {_id: channelId},
                 {
                     $addToSet:{
@@ -39,10 +39,12 @@ export const addMemberController = async (req, res) => {
                     }
                 }
             )
+
+            const updateMemberList = await chatGroup.find({_id: channelId});
             res.send(updateMemberList);
         }
     }else{
-        res.sendStatus(400);
+        res.sendStatus(201);
     }
 
 }
@@ -79,6 +81,7 @@ export const sendMessageController = async (req, res) => {
 
 export const findChannelsController = async (req, res) => {
      const {session} = req.params;
+     console.log(session);
      const allChannels = await chatGroup.find({"members.idMember" : session});
      res.send(allChannels);
 }

@@ -8,27 +8,25 @@ const DetailsEdit = () => {
     
     const Details = () => {
         return(
-            <div className='details rounded-3xl'>
-                <p>Profile</p>
-                <p>Basic info, like your name and photo</p>
+            <div className='details mx-auto rounded-3xl'>
+            <div className='h2'>
+                <h2>PROFILE</h2>
+            </div>
                 <table className="detailsEdit table-fixed text-left mx-auto">
-            <thead>
-            <div className='profile'>
-                <h3>Profile</h3>
-                <p>Some info maybe visible to other people</p>
-           </div>
-            </thead>
-            {session.map(user =>
-              <DetailsBody user={user} key={user._id} />
-            )}
-              
-          </table>
+                    <thead>
+                    <div className='profile'>
+                        <p>Some info maybe visible to other people</p>
+                    </div>
+                    </thead>
+                    {session.map(user =>
+                    <DetailsBody user={user} key={user._id} />
+                    )}
+                    
+                </table>
             </div>
             
         )
     }
-
-   
 
     return(
         <div>
@@ -41,7 +39,3 @@ const DetailsEdit = () => {
 
 export default DetailsEdit;
 
-/*   <div>
-                        <img src="" alt=""></img>
-                        <button>change photo</button>
-                    </div>*/

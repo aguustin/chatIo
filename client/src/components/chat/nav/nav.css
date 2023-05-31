@@ -156,6 +156,7 @@
     height: 100%;
     width: 100%;
 }
+
 }
 
 @media screen and (max-width:1097px) {
@@ -194,8 +195,10 @@
 }
 
 @media screen and (max-height:592px) {
+
     .openNavLabel img{
         width: 20px;
         bottom:23px;
     }
+    
 }

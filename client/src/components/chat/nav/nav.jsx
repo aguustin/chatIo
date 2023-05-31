@@ -19,7 +19,8 @@ const Nav = () => {
             title: e.target.elements.channelName.value,
             description: e.target.elements.channelDescription.value,
             idMember: session[0]._id,
-            profilePhoto: session[0].photo.url
+            profilePhoto: session[0]?.photo?.url,
+            memberEmail: session[0]?.email
         };
         await addChannelContext(channelPropierties);
         setNewChannelLayout(!newChannelLayout);
@@ -68,7 +69,7 @@ const Nav = () => {
                        </div>
                    </div>)}
                    {session.map((s) =><div key={s._id} className='user-nav'>
-                       <img src={s.photo?.url} alt=""></img>
+                   {s.photo?.url ? <img src={s.photo.url} alt=""></img> : <img src={notUser} alt=""></img>}
                         <p>{s.name}</p>
                    </div>)}
                </nav>
@@ -104,7 +105,7 @@ const Nav = () => {
                     </li>)}
                 </div>
                 {session.map((s) =><div key={s._id} className='user-nav'>
-                    <img src={s.photo?.url} alt=""></img>
+                    {s.photo?.url ? <img src={s.photo.url} alt=""></img> : <img src={notUser} alt=""></img>}
                     <p>{s.name}</p>
                 </div>)}
             </nav>

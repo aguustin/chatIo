@@ -81,7 +81,7 @@ export const details = async (req, res) => {
 export const editUser = async (req, res) => {
 
     const id = req.params.id;
-    const {name, bio, phone, email, password } = req.body;
+    const {name, bio, phone } = req.body;
     let photo;
 
     if(req.files){
@@ -98,16 +98,16 @@ export const editUser = async (req, res) => {
 
         try{
     
-            const userUpdate = await users.updateOne({_id: id}, 
+         await users.updateOne({_id: id}, 
                 {$set : {
                     photo: photo,
                     name: name,
                     bio: bio,
-                    phone: phone,
-                    email: email,
-                    password: password
+                    phone: phone
                 }
         })
+
+        const userUpdate = await users.find({_id: id});
         
             res.send(userUpdate);
         

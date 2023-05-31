@@ -69,22 +69,19 @@ const LoginRegister = () => {
         }
   
           return(
-              
-             
               <div>
-                 <button>Back</button>
               <div className='edit mx-auto'>
-                  <h2>Change Info</h2>
-                  <p>Changes will be reflected to every service</p>
-  
                   <form onSubmit={(e) => registerUser(e)}>
+                      <div className='form-header'>
+                            <h2>CHATIO</h2>
+                      </div>
                       <div className='form-input-edit mt-6'>
                           <label for="name">name</label><br></br>
                           <input type="text" name="name" placeholder="enter your name..."></input>
                       </div>
                       <div className="form-input-edit">
                           <label for="bio">bio</label><br></br>
-                          <textarea type="text" name="bio" placeholder="enter your bio..."></textarea>
+                          <textarea type="text" name="bio" col="10" placeholder="enter your bio..."></textarea>
                       </div>
                       <div className="form-input-edit">
                           <label for="phone">phone</label><br></br>
@@ -128,40 +125,42 @@ const LoginRegister = () => {
 
       const Login = () => {
         return(
-            <div className="loginRegister mx-auto rounded-3xl">
-                <div className='lr text-center mx-auto'>
-                    <img src={devchallenges} alt=""></img>
-                    {changeForm ? <p>Join thousands of leaners from around the world</p> : <p>Login</p>}
-                    {changeForm ? <p>WELCOME TO CHATIO</p> : null}
-                </div>
-                <form onSubmit={(e) => enter(e)}>
-                    <div className="form-input">
-                        <input className="rounded-xl" type="text" name="email" placeholder="Email"></input>
+            <div>
+                <div className="loginRegister rounded-3xl">
+                    <div className='lr text-center mx-auto'>
+                        <img src={devchallenges} alt=""></img>
+                        {changeForm ? <p>Join thousands of leaners from around the world</p> : <p>Login</p>}
+                        {changeForm ? <p>WELCOME TO CHATIO</p> : null}
                     </div>
-                    <div className='form-input'>
-                        <input className="rounded-xl" type="password" name="password" placeholder="Password"></input>
-                    </div>
-                    { changeForm ? <button className='form-button rounded-xl font-bold' type="submit">Start Coding Now</button>
-                     : <button className='form-button rounded-xl font-bold' type="submit">Login</button> }
-                </form>
-              
-                <div className='social'>
-                    <p className='mt-6'>or continue with these social profile</p>
-                        <div className='flex mx-auto justify-center mt-4'>
-                           
-                             <button onClick={googleAcount}><img src={google} alt=""></img></button>
-                             <button onClick={facebookAcount}><img src={facebook} alt=""></img></button>
-                             <button onClick={twitterAcount}><img src={twitter} alt=""></img></button>
-                             <button onClick={githubAcount}><img src={github} alt=""></img></button>
+                    <form onSubmit={(e) => enter(e)}>
+                        <div className="form-input">
+                            <input className="rounded-xl" type="text" name="email" placeholder="Email"></input>
                         </div>
-                        <p className='mt-4'>Dont have account yet? <button onClick={() => setChangeForm(!changeForm)}>Register</button></p>
+                        <div className='form-input'>
+                            <input className="rounded-xl" type="password" name="password" placeholder="Password"></input>
+                        </div>
+                        { changeForm ? <button className='form-button rounded-xl font-bold' type="submit">Start Coding Now</button>
+                        : <button className='form-button rounded-xl font-bold' type="submit">Login</button> }
+                    </form>
+                
+                    <div className='social'>
+                        <p className='mt-6'>or continue with these social profile</p>
+                            <div className='flex mx-auto justify-center mt-4'>
+                            
+                                <button onClick={googleAcount}><img src={google} alt=""></img></button>
+                                <button onClick={facebookAcount}><img src={facebook} alt=""></img></button>
+                                <button onClick={twitterAcount}><img src={twitter} alt=""></img></button>
+                                <button onClick={githubAcount}><img src={github} alt=""></img></button>
+                            </div>
+                            <p className='mt-4'>Dont have account yet? <button onClick={() => setChangeForm(!changeForm)}>Register</button></p>
+                    </div>
                 </div>
             </div>
         )
       }
 
       return(
-        <div>
+        <div className='pos'>
             {changeForm ? <Login/> : <RegisterInfo/>}
         </div>
       )

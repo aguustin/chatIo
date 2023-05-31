@@ -1,30 +1,48 @@
+.pos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .edit{
-    position: absolute;
     width: 30vw;
+    margin-top: 6vh;
     min-width: 450px;
     color: rgb(23, 85, 255);
     font-weight: 600;
     border: 1px solid rgb(23, 85, 255);
     border-radius: 20px;
-    top:10%;
-    left: 50%;
-    transform: translateX(-50%);
+}
+
+.form-header{
+    display: flex;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(23, 85, 255);
+    color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    font-size: 20px;
 }
 
 .form-input-edit{
-    margin-top: 1rem;
+    text-align: left;
+    margin-top: .2rem;
+    padding: 0rem 2rem;
 }
 
 .form-input-edit input, textarea{
     margin-top: .5rem;
+    background-color: transparent;
 }
 
 .form-input-edit input, textarea{
-    width: 90%;
+    width: 100%;
     padding: .5rem;
     background-color: transparent;
     border-radius: 5px;
-    border: 1px solid rgb(194, 194, 194);
+    border: 1px solid rgb(23, 85, 255);
     outline: none;
 }
 
@@ -33,9 +51,9 @@
 }
 
 .loginRegister{
-    margin-top: 13vh;
+    margin-top: 6vh;
     width: 28vw;
-    min-width: 450px;
+    min-width: 400px;
     border: 1px solid rgb(23, 85, 255);
     padding: 1.5rem 2.5rem;
     background-color: rgb(36, 36, 36);
@@ -85,5 +103,11 @@
 
 .social button{
     color: rgb(23, 85, 255);
+}
+
+@media screen and (max-width: 450px) {
+    .edit{
+        width: 25vw;
+    }
 }
 

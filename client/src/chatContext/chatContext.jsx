@@ -29,14 +29,16 @@ export const ChatContextProvider = ({children}) => {
    }
 
    const addMemberContext = async (addMember) => {
-        await addMemberRequest(addMember);
+        const res = await addMemberRequest(addMember);
+        setChannels(res.data);
    }
 
    const openChannelContext = async (channelId) => {
     const res = await openChannelRequest(channelId);
     setMessage(res.data);
-    //setSocketMessages(res.data[0].message); 
+    setSocketMessages(res.data[0].message); 
     setNewMessages(res.data[0].message);
+    console.log(newMessages);
     setChannels(res.data);
    }
 

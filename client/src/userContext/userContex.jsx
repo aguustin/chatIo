@@ -1,12 +1,13 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { loginRequest, registerRequest, detailsRequest, editRequest } from "../api/request";
+import ChatContext from "../chatContext/chatContext";
 
 
 const UserContext = createContext();
 
 export const UserContextProvider = ({children}) => {
 
-   
+    const {memberData} = useContext(ChatContext);
     const [userDetail, setUserDetail] = useState([]);
     const [session, setSession] = useState([]);
 
@@ -32,8 +33,10 @@ export const UserContextProvider = ({children}) => {
     }
 
     const editUserContext = async (id, editUserOb) => {
-        console.log(id);
-        await editRequest(id, editUserOb);
+       const res = await editRequest(id, editUserOb);
+       localStorage.setItem("credentials", JSON.stringify(res.data));
+       setSession(JSON.parse(localStorage.getItem("credentials")));
+       memberData(res.data);
     }
 
     return(

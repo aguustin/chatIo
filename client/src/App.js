@@ -12,16 +12,16 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <UserContextProvider>
         <ChatContextProvider>
+        <UserContextProvider>
           <Routes>
             <Route path="/" element={<LoginRegister/>}></Route>
             <Route path="/details" element={<DetailsEdit/>}></Route>
             <Route path="/signOut" element={<SignOut/>}></Route> 
             <Route path="/chat" element={<Nav/>}></Route>
           </Routes>
+        </UserContextProvider>
         </ChatContextProvider>
-      </UserContextProvider>
       </BrowserRouter>
     </div>
   );
