@@ -31,6 +31,7 @@
 }
 
 .container-message{
+    position: relative;
     height: 80vh;
     width: 86%;
     overflow-y: scroll;
@@ -152,6 +153,40 @@
 .membersLayout ul li img{
     width: 80px;
     border-radius: 100%;
+}
+
+@keyframes addMember {
+    0%{
+      opacity: 0;
+    }
+    50%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+
+.memberAdded, .cannotAddMember{
+    position: absolute;
+    top:1vw;
+    right: 5vw;
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+}
+
+.memberAdded{
+    background-color:rgb(23, 85, 255);
+    animation: addMember 2s ease-in-out;
+}
+
+.cannotAddMember{
+    background-color: red;
+    animation: addMember 2s ease-in-out;
 }
 
 

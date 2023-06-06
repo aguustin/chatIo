@@ -8,7 +8,6 @@ export const ChatContextProvider = ({children}) => {
    const [channels, setChannels] = useState([]);
    const [socketMessages, setSocketMessages] = useState([]);
    const [newMessages, setNewMessages] = useState([]);
-   
    const memberData = JSON.parse(localStorage.getItem("credentials"));
 
    useEffect(() => {
@@ -19,8 +18,10 @@ export const ChatContextProvider = ({children}) => {
    }, [])
 
    const obtainChannelContext = async () => {
-     const channelsData = await obtainChannelsRequest(memberData[0]._id);
-     setChannels(channelsData.data);
+     if(memberData){
+          const channelsData = await obtainChannelsRequest(memberData[0]?._id);
+          setChannels(channelsData.data);
+     }
    }
 
    const addChannelContext = async (channelPropierties) => {
@@ -30,7 +31,14 @@ export const ChatContextProvider = ({children}) => {
 
    const addMemberContext = async (addMember) => {
         const res = await addMemberRequest(addMember);
-        setChannels(res.data);
+        //setChannels(res.data);
+     console.log(res.status);
+        if(res.status === 201){
+          return 0;
+        }else{
+          setChannels(res.data);
+          return 1;
+        }
    }
 
    const openChannelContext = async (channelId) => {
@@ -59,7 +67,7 @@ export const ChatContextProvider = ({children}) => {
      addMemberContext, 
      openChannelContext, 
      sendMessageContext, 
-     memberData, 
+     memberData,
      channels, 
      messages, 
      socketMessages, 

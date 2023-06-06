@@ -7,6 +7,7 @@ export const addNewChannelController = async (req, res) => {
         const newChannel = await new chatGroup({
             title: title,
             description: description,
+            adminId : idMember,
             members: { 
             idMember : idMember,
             profilePhoto: profilePhoto,
@@ -21,11 +22,11 @@ export const addMemberController = async (req, res) => {
     const {channelId, memberEmail} = req.body;
     const userExist = await users.find({email: memberEmail});
 
-    if(userExist){
+    if(userExist.length !== 0){
         const memberExist = await chatGroup.find({_id: channelId, "members.memberEmail": memberEmail});
         if(memberExist.length !== 0){
-            console.log("usuario ya existe en el grupo");
-            
+            //const updateMemberList = await chatGroup.find({_id: channelId});
+            res.sendStatus(201);
         }else{
             await chatGroup.updateOne(
                 {_id: channelId},
@@ -44,7 +45,8 @@ export const addMemberController = async (req, res) => {
             res.send(updateMemberList);
         }
     }else{
-        res.sendStatus(201);
+        const updateMemberList = await chatGroup.find({_id: channelId});
+        res.send(updateMemberList);
     }
 
 }

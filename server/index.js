@@ -7,16 +7,13 @@ import { connectionDb } from "./db.js";
 import passport from "passport";
 import cookieSession from "cookie-session";
 import userRoutes from "./routes/userRoutes.js";
-import socialRoutes from "./routes/socialRoutes.js";
 import chatRoutes from "./routes/chatRoutes.js";
 import http from 'http';
 import cors from "cors";
-import ws from "ws";
 
 const app = express();
 app.use(cors());
 const httpServer = http.createServer(app);
-//const io = new SocketServer(httpServer, { wsEngine: ws.SocketServer });
 const io = new SocketServer(httpServer, {
     cors: {
         origin: 'http://127.0.0.1:3000'
@@ -28,7 +25,6 @@ connectionDb();
 
 io.on('connection', (socket) => {
     socket.on('newMessage', (newMessages, messageData) => {
-        //socket.broadcast.emit('receiveMessage', socket.id, newMessages, messageData);
         io.emit('receiveMessage', socket.id, newMessages, messageData);
     })
 })
@@ -56,7 +52,6 @@ app.use(morgan('tiny'));
 
 //routes
 app.use(userRoutes);
-app.use(socialRoutes);
 app.use(chatRoutes);
 
 //listen

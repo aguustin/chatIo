@@ -8,6 +8,9 @@ const chatSchema = new mongoose.Schema({
     description:{
         type: String
     },
+    adminId:{
+        type: String
+    },
     members:[
         {
         idMember:{

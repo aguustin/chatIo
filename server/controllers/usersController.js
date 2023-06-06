@@ -26,11 +26,11 @@ export const loginUser = async (req, res) => {
 
             }else{
 
-                res.sendStatus(400);
+                res.sendStatus(201);
 
             }
         }else{
-            res.send(400);
+            res.sendStatus(201);
         }
 
 }
@@ -81,7 +81,7 @@ export const details = async (req, res) => {
 export const editUser = async (req, res) => {
 
     const id = req.params.id;
-    const {name, bio, phone } = req.body;
+    const {name, bio, phone, password } = req.body;
     let photo;
 
     if(req.files){
@@ -97,6 +97,21 @@ export const editUser = async (req, res) => {
     }
 
         try{
+
+        if(req.body.password){
+            const salt = bcrypt.genSaltSync(10);
+            const hash = await bcrypt.hash(password, salt);
+            
+            await users.updateOne({_id: id}, 
+                {$set : {
+                    photo: photo,
+                    name: name,
+                    bio: bio,
+                    phone: phone,
+                    password: hash
+                }
+        })
+        }
     
          await users.updateOne({_id: id}, 
                 {$set : {

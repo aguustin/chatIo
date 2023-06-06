@@ -3,8 +3,11 @@ import io from "socket.io-client";
 import { useContext, useEffect} from 'react';
 import ChatContext from '../../../chatContext/chatContext';
 import notUser from '../../../img/notUser.jpg';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const socket = io();
+
 
 const ChatBody = () => {
    
@@ -15,13 +18,37 @@ const ChatBody = () => {
 
     const addMember = async (e, channelId) => {
         e.preventDefault();
-       
+    
         const addMember = {
             channelId: channelId,
             memberEmail: e.target.elements.addMember.value,
         }
-    
-        await addMemberContext(addMember);
+
+       const res = await addMemberContext(addMember);
+            
+       if(res > 0){
+        toast.info('Member Added!!', {
+            position: "top-right",
+            autoClose: 500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+            });
+       }else{
+        toast.warn('Member already exist!!', {
+            position: "top-right",
+            autoClose: 500,
+            hideProgressBar: true,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            });
+       }
     }
 
     const sendMessage = async (e, id) => {
@@ -52,9 +79,9 @@ const ChatBody = () => {
         <div className='chatBody w-full'>
             {messages.map((m) => <div key={m._id} className='group-title'>
                     <p>{m.title}</p>
-                    <form onSubmit={(e) => addMember(e, m._id)}>
+                    {m.adminId === memberData[0]._id ? <form onSubmit={(e) => addMember(e, m._id)}>
                        <input name="addMember" type="email" placeholder=' '></input>
-                    </form>
+                    </form>: ''}
                 </div>)}
                 <div className='container-message'>     
                 {newMessages.map((mm, i) => <div key={mm._id} className='message'> 
@@ -75,6 +102,17 @@ const ChatBody = () => {
                         <input name="newMessage" type="text" placeholder='Tape a new message'></input>
                     </form>
                 </div>)}
+                <ToastContainer 
+                position="top-right"
+                autoClose={500}
+                hideProgressBar
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"/>
         </div>
     )
 }

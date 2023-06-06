@@ -7,7 +7,7 @@ const UserContext = createContext();
 
 export const UserContextProvider = ({children}) => {
 
-    const {memberData} = useContext(ChatContext);
+    const {memberData, setMemberData} = useContext(ChatContext);
     const [userDetail, setUserDetail] = useState([]);
     const [session, setSession] = useState([]);
 
@@ -36,7 +36,7 @@ export const UserContextProvider = ({children}) => {
        const res = await editRequest(id, editUserOb);
        localStorage.setItem("credentials", JSON.stringify(res.data));
        setSession(JSON.parse(localStorage.getItem("credentials")));
-       memberData(res.data);
+       console.log(memberData);
     }
 
     return(
