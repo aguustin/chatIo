@@ -1,5 +1,5 @@
 export const MemberAdded = () => {
-    return(
+    return (
         <div className="memberAdded">
             <p>Member added!</p>
         </div>
@@ -7,9 +7,9 @@ export const MemberAdded = () => {
 }
 
 export const CannotAddMember = () => {
-    return(
+    return (
         <div className="cannotAddMember">
-             <p>Cannot add member!</p>
+            <p>Cannot add member!</p>
         </div>
     )
 }

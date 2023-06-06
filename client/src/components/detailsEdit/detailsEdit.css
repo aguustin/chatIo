@@ -1,34 +1,36 @@
-.details{
+.details {
     width: 500px;
     border: 1px solid rgb(64, 64, 253);
     margin-top: 6vh;
     margin-bottom: 6vh;
 
-    && img{
+    && img {
         width: 100px;
     }
 }
 
-.details thead, tr{
+.details thead,
+tr {
     border-bottom: 1px solid rgb(64, 64, 253);
 }
 
-.details button{
+.details button {
     background-color: rgb(64, 64, 253);
     border: 1px solid rgb(64, 64, 253);
     color: white;
     font-weight: 600;
 }
 
-.image-form{
+.image-form {
     margin-top: 1rem;
-    && img{
+
+    && img {
         margin: auto;
     }
 }
 
-.form-group{
-    && input{
+.form-group {
+    && input {
         width: 100%;
         background-color: transparent;
         border: 1px solid rgb(64, 64, 253);
@@ -37,26 +39,23 @@
     }
 }
 
-.form-input{
+.form-input {
     border-radius: 1rem;
     width: 100%;
     border: 1px solid rgb(64, 64, 253);
     padding: .7rem .5rem;
 
-    && input:-webkit-autofill{
-       
-            background-color:rgb(36, 36, 36);
-          
-          
+    && input:-webkit-autofill {
+        background-color: rgb(36, 36, 36);
     }
 }
 
-.form-buttons{
+.form-buttons {
     width: 80%;
     border-radius: 5px;
     margin: auto;
 
-    && button{
+    && button {
         padding: .5rem 1.5rem;
         border-radius: 5px;
         margin-top: 2rem;
@@ -64,7 +63,7 @@
     }
 }
 
-#save{
+#save {
     color: white;
     font-weight: 600;
     background: rgb(64, 64, 253);
@@ -73,21 +72,22 @@
     margin-top: 1rem;
 }
 
-.details-form input, textarea{
-   
-    && .form-group{
+.details-form input,
+textarea {
+
+    && .form-group {
         border: none;
     }
 }
 
-.details-form{
-    && label{
+.details-form {
+    && label {
         font-weight: 600;
         color: rgb(64, 64, 253);
     }
 }
 
-.h2{
+.h2 {
     display: flex;
     height: 60px;
     align-items: center;

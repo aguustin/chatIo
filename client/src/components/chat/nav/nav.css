@@ -1,4 +1,4 @@
-.chat-background{
+.chat-background {
     position: relative;
     background-color: rgb(29, 29, 29);
     height: 100vh;
@@ -10,7 +10,7 @@
     margin: 0;
 }
 
-.chat-background > div{
+.chat-background>div {
     width: 90vw;
     min-width: 400px;
     height: 90vh;
@@ -19,25 +19,25 @@
     margin: 0;
 }
 
-.openNavLabel{
-  position: absolute;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-  background-color: red;
-  z-index: 1;
-  height: 0px;
+.openNavLabel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    background-color: red;
+    z-index: 1;
+    height: 0px;
 }
 
-.openNavLabel img{
+.openNavLabel img {
     width: 40px;
 }
 
-#openNav{
+#openNav {
     display: none;
 }
 
-.nav{
+.nav {
     position: relative;
     width: 22vw;
     min-width: 350px;
@@ -48,69 +48,69 @@
     z-index: 2;
 }
 
-.nav > div{
+.nav>div {
     list-style: none;
     align-items: center;
     width: 90%;
     margin: 0 auto;
     margin: .5rem;
     margin-left: 1rem;
-    color:rgb(184, 184, 184);
+    color: rgb(184, 184, 184);
 }
 
-.nav button{
+.nav button {
     border-radius: 3px;
     padding: 0rem .5rem;
     height: 40px;
     margin-top: 8px;
 }
 
-.nav input{
+.nav input {
     width: 100%;
     background-color: rgb(24, 24, 24);
     padding: .7rem .7rem;
     outline: none;
     border-radius: 6px;
-    color:rgb(41, 41, 41);
+    color: rgb(41, 41, 41);
     font-weight: 500;
 }
 
-.addChannel{
+.addChannel {
     justify-content: space-between;
 }
 
-.groups{
+.groups {
     height: 60vh;
     overflow-y: scroll;
 }
 
-.groups::-webkit-scrollbar{
+.groups::-webkit-scrollbar {
     width: 10px;
     background-color: transparent;
 }
 
-.groups::-webkit-scrollbar-thumb{
+.groups::-webkit-scrollbar-thumb {
     background-color: rgb(36, 36, 36);
     border-radius: 10px;
 }
 
-.groups li:hover{
+.groups li:hover {
     color: rgb(123, 158, 253);
     transition: all .5s;
 }
 
-.titleG{
+.titleG {
     width: 40px;
 }
 
-.groups img{
+.groups img {
     height: 74px;
     width: 74px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.user-nav{
+.user-nav {
     position: absolute;
     height: 70px;
     bottom: .5rem;
@@ -120,26 +120,26 @@
 
     && p {
         font-size: 14px;
-        
+
     }
 }
 
-.user-nav img{
+.user-nav img {
     width: 4rem;
     height: 3rem;
     object-fit: cover;
     border-radius: 5px;
 }
 
-#logout{
-    && button{
+#logout {
+    && button {
         background-color: black;
         padding: 0rem 1rem;
         border: 1px solid white;
     }
 }
 
-.form-channel{
+.form-channel {
     position: absolute;
     width: 600px;
     border-radius: 9px;
@@ -148,27 +148,28 @@
     z-index: 3;
 }
 
-.form-channel > p{
+.form-channel>p {
     color: rgb(184, 184, 184);
     font-weight: 600;
 }
 
-.form-channel form{
+.form-channel form {
     padding: 0rem 1rem;
 }
 
-.form-channel input, textarea{
+.form-channel input,
+textarea {
     width: 100%;
     background-color: rgb(36, 36, 36);
     border-radius: 5px;
     padding: 1rem;
 }
 
-.form-channel form textarea{
+.form-channel form textarea {
     margin-top: 1rem;
 }
 
-.addChannelBu{
+.addChannelBu {
 
     && button {
         padding: .2rem .5rem;
@@ -179,48 +180,48 @@
         font-weight: 600;
         margin-bottom: 8px;
         margin-left: 10px;
-        
     }
 }
+
 @media screen and (max-height:980px) {
 
-.chat-background > div{
-    height: 100%;
-    width: 100%;
-}
+    .chat-background>div {
+        height: 100%;
+        width: 100%;
+    }
 
 }
 
 @media screen and (max-width:1097px) {
 
-    .nav{
+    .nav {
         position: absolute;
         left: 0;
         transform: translateX(-260px);
         z-index: 2;
     }
 
-    .chat-background > div{
+    .chat-background>div {
         height: 100%;
         width: 100%;
     }
 
-    #openNav:checked ~ .nav{
+    #openNav:checked~.nav {
         transform: translateX(0px);
         transition: .3s;
     }
 
-    #openNav:not(:checked) ~ .nav{
+    #openNav:not(:checked)~.nav {
         transform: translateX(-350px);
         transition: .3s;
     }
 
-    #openNav:checked ~ .openNavLabel{
+    #openNav:checked~.openNavLabel {
         transform: translateX(350px);
         transition: .3s;
     }
 
-    #openNav:not(:checked) ~ .openNavLabel{
+    #openNav:not(:checked)~.openNavLabel {
         transform: translateX(0px);
         transition: .3s;
     }
@@ -228,9 +229,9 @@
 
 @media screen and (max-height:592px) {
 
-    .openNavLabel img{
+    .openNavLabel img {
         width: 20px;
-        bottom:23px;
+        bottom: 23px;
     }
-    
+
 }

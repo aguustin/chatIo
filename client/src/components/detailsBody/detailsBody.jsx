@@ -5,7 +5,7 @@ const DetailsBody = (user) => {
 
     const [detailsBody, setDetailsBody] = useState(true);
     const [image, setImage] = useState([]);
-    const {editUserContext} = useContext(UserContext);
+    const { editUserContext } = useContext(UserContext);
 
     const edit = async (e, id) => {
         e.preventDefault();
@@ -13,7 +13,7 @@ const DetailsBody = (user) => {
         const name = e.target.elements.name.value;
         const bio = e.target.elements.bio.value;
         const password = e.target.elements.password.value;
-      
+
         const editUserOb = {
             photo: photo,
             name: name,
@@ -25,7 +25,7 @@ const DetailsBody = (user) => {
     }
 
     const SeeInfo = () => {
-        return(
+        return (
             <div className="details-form">
                 <form>
                     <div className='image-form'>
@@ -34,7 +34,7 @@ const DetailsBody = (user) => {
                     </div>
                     <div className='form-group'>
                         <label>Name</label>
-                        <textarea type="text" disabled="true" name="name" value={user.user.name}  maxlength="10"></textarea>
+                        <textarea type="text" disabled="true" name="name" value={user.user.name} maxlength="10"></textarea>
                     </div>
                     <div className='form-group'>
                         <label>Bio</label>
@@ -51,17 +51,17 @@ const DetailsBody = (user) => {
                 </div>
             </div>
         )
-        
+
     }
 
     const EditInfo = () => {
         return (
             <div className="details-form">
                 <form onSubmit={(e) => edit(e, user.user._id)} encType="multipart/form-data">
-                    { image.length === 0 ? <img src="" alt=""></img> :  <img src={image.name} alt=""></img> }
+                    {image.length === 0 ? <img src="" alt=""></img> : <img src={image.name} alt=""></img>}
                     <div className='form-group'>
                         <label>Photo</label>
-                        <input  type="file" name="photo" accept='image/*'></input>
+                        <input type="file" name="photo" accept='image/*'></input>
                     </div>
                     <div className='form-group'>
                         <label>Name</label>
@@ -84,12 +84,12 @@ const DetailsBody = (user) => {
         )
     }
 
-    return(
+    return (
         <div>
-            { detailsBody ? <SeeInfo/> : <EditInfo/> }
+            {detailsBody ? <SeeInfo /> : <EditInfo />}
         </div>
     )
-    
+
 }
 
 export default DetailsBody;

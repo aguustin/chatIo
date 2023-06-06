@@ -4,7 +4,7 @@ import { useContext } from "react";
 
 const SignOut = () => {
 
-    const {setUserDetail, setSession, session} = useContext(UserContext);
+    const { setUserDetail, setSession, session } = useContext(UserContext);
     console.log(session);
     const navigate = useNavigate();
     setUserDetail([]);

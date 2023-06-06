@@ -9,38 +9,38 @@ import { useNavigate } from 'react-router-dom';
 const LoginRegister = () => {
 
     const navigate = useNavigate();
-    const {enterUser, registerContext} = useContext(UserContext);
+    const { enterUser, registerContext } = useContext(UserContext);
     const [changeForm, setChangeForm] = useState(true);
-   
+
     const RegisterInfo = () => {
 
         const registerUser = async (e) => {
-          e.preventDefault();
-          const name = e.target.elements.name.value;
-          const bio = e.target.elements.bio.value;
-          const phone = e.target.elements.phone.value;
-          const email = e.target.elements.email.value;
-          const password = e.target.elements.password.value;
-  
-          const userRegister = {
-              name: name,
-              bio: bio,
-              phone: phone,
-              email: email,
-              password: password
-          }
-        
-          await registerContext(userRegister);
+            e.preventDefault();
+            const name = e.target.elements.name.value;
+            const bio = e.target.elements.bio.value;
+            const phone = e.target.elements.phone.value;
+            const email = e.target.elements.email.value;
+            const password = e.target.elements.password.value;
 
-          setChangeForm(!changeForm);
+            const userRegister = {
+                name: name,
+                bio: bio,
+                phone: phone,
+                email: email,
+                password: password
+            }
+
+            await registerContext(userRegister);
+
+            setChangeForm(!changeForm);
         }
-  
-          return(
-              <div>
+
+        return (
+            <div>
                 <div className='edit mx-auto'>
                     <form onSubmit={(e) => registerUser(e)}>
                         <div className='form-header'>
-                                <h2>CHATIO</h2>
+                            <h2>CHATIO</h2>
                         </div>
                         <div className='form-input-edit mt-6'>
                             <label for="name">name</label><br></br>
@@ -62,35 +62,33 @@ const LoginRegister = () => {
                             <label for="password">password</label>
                             <input type="password" name="password" placeholder="enter your new password..."></input>
                         </div>
-    
+
                         <button type="submit" id="save">Save</button>
                     </form>
                     <p className='mt-4'>already a member? <button onClick={() => setChangeForm(!changeForm)}>Login</button></p>
-                </div>     
-              </div>
-             
-      )
-          
-      }
+                </div>
+            </div>
 
-      const enter = async (e) => {
+        )
+
+    }
+
+    const enter = async (e) => {
         e.preventDefault();
         const email = e.target.elements.email.value;
         const password = e.target.elements.password.value;
         const confirm = await enterUser(email, password);
 
-        console.log("e", confirm);
-
-        if(confirm !== 0){
-            navigate("/details");  //hacer la redireccion a details
-        }else{
+        if (confirm !== 0) {
+            navigate("/details");
+        } else {
             console.log("s");
         }
     }
 
 
-      const Login = () => {
-        return(
+    const Login = () => {
+        return (
             <div>
                 <div className="loginRegister rounded-3xl">
                     <div className='lr text-center mx-auto'>
@@ -105,23 +103,23 @@ const LoginRegister = () => {
                         <div className='form-input'>
                             <input className="rounded-xl" type="password" name="password" placeholder="Password"></input>
                         </div>
-                        { changeForm ? <button className='form-button rounded-xl font-bold' type="submit">Start Coding Now</button>
-                        : <button className='form-button rounded-xl font-bold' type="submit">Login</button> }
+                        {changeForm ? <button className='form-button rounded-xl font-bold' type="submit">Start Coding Now</button>
+                            : <button className='form-button rounded-xl font-bold' type="submit">Login</button>}
                     </form>
-                
+
                     <div className='social'>
                         <p className='mt-4'>Dont have account yet? <button onClick={() => setChangeForm(!changeForm)}>Register</button></p>
                     </div>
                 </div>
             </div>
         )
-      }
+    }
 
-      return(
+    return (
         <div className='pos'>
-            {changeForm ? <Login/> : <RegisterInfo/>}
+            {changeForm ? <Login /> : <RegisterInfo />}
         </div>
-      )
+    )
 
 }
 

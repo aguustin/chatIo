@@ -1,45 +1,45 @@
 import mongoose from "mongoose";
 
 const chatSchema = new mongoose.Schema({
-    title:{
-        type:String,
+    title: {
+        type: String,
         require: true
     },
-    description:{
+    description: {
         type: String
     },
-    adminId:{
+    adminId: {
         type: String
     },
-    members:[
+    members: [
         {
-        idMember:{
-            type:String
-        },
-        profilePhoto:{
-            type:String
-        },
-        memberEmail:{
-            type:String
+            idMember: {
+                type: String
+            },
+            profilePhoto: {
+                type: String
+            },
+            memberEmail: {
+                type: String
+            }
         }
-    }
     ],
-    message:[
+    message: [
         {
-            memberPhoto:{
-                type:String
+            memberPhoto: {
+                type: String
             },
-            memberEmail:{
-                type:String
+            memberEmail: {
+                type: String
             },
-            memberName:{
-                type:String
+            memberName: {
+                type: String
             },
-            messageDate:{
-                type:String
+            messageDate: {
+                type: String
             },
-            messageMember:{
-                type:String
+            messageMember: {
+                type: String
             }
         }
     ]

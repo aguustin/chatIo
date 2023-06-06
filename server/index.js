@@ -18,7 +18,7 @@ const io = new SocketServer(httpServer, {
     cors: {
         origin: 'http://127.0.0.1:3000'
     }
-    
+
 });
 
 connectionDb();
@@ -34,14 +34,14 @@ io.on('connection', (socket) => {
 //middlewares
 app.use(express.text());
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload({
     useTempFiles: true,
     tempFileDir: './usersImg',
 }));
 app.use(cookieSession({
-    name:"session",
-    keys:["authenticated"],
+    name: "session",
+    keys: ["authenticated"],
     maxAge: 24 * 24 * 60 * 100
 }))
 

@@ -1,31 +1,31 @@
 import mongoose from "mongoose";
 
 const UsersSchema = new mongoose.Schema({
-    photo:{
+    photo: {
         url: String,
         public_id: String
     },
-    name:{
+    name: {
         type: String,
-        require:true
+        require: true
     },
-    bio:{
+    bio: {
         type: String,
-        require:true    
+        require: true
     },
-    phone:{
+    phone: {
         type: Number,
         require: true
     },
-    email:{
+    email: {
         type: String,
-        require:true
+        require: true
     },
-    password:{
+    password: {
         type: String,
-        require:true
+        require: true
     }
-   
+
 })
 
 export default mongoose.model('Users', UsersSchema);

@@ -1,12 +1,12 @@
-*{
+* {
     list-style: none;
 }
 
-.chatBody{
-    height:100vh;
+.chatBody {
+    height: 100vh;
 }
 
-.group-title{
+.group-title {
     height: 10vh;
     position: relative;
     top: 0;
@@ -17,7 +17,7 @@
     align-items: center;
 }
 
-.group-title form input{
+.group-title form input {
     position: absolute;
     right: 1rem;
     bottom: .5rem;
@@ -30,79 +30,79 @@
     border-bottom: 1px solid rgb(23, 85, 255);
 }
 
-.container-message{
+.container-message {
     position: relative;
     height: 80vh;
     width: 86%;
     overflow-y: scroll;
 }
 
-.container-message::-webkit-scrollbar{
+.container-message::-webkit-scrollbar {
     width: 3px;
     background-color: rgb(61, 61, 61);
 }
 
-.container-message::-webkit-scrollbar-thumb{
+.container-message::-webkit-scrollbar-thumb {
     background-color: rgb(23, 85, 255);
     border-radius: 10px;
 }
 
-.message{
+.message {
     display: flex;
     text-align: left;
 }
 
-.message img{
+.message img {
     width: 3rem;
     height: 3rem;
     object-fit: cover;
     border-radius: 5px;
 }
 
-.message-info li p{
+.message-info li p {
     color: rgb(123, 158, 253);
     font-weight: 600;
 }
 
-.message-info > p{
+.message-info>p {
     color: rgb(184, 184, 184);
     margin-top: -.5rem;
     margin-left: 30px;
 }
 
-.message-session{
+.message-session {
     display: flex;
     text-align: right;
 }
 
-.message-session img{
+.message-session img {
     width: 3rem;
     height: 3rem;
     object-fit: cover;
     border-radius: 5px;
 }
 
-.message-info-session li p{
+.message-info-session li p {
     color: rgb(55, 117, 36);
     font-weight: 600;
 }
 
-.message-info-session > p{
+.message-info-session>p {
     color: rgb(184, 184, 184);
     margin-top: -.5rem;
     margin-left: 30px;
 }
 
-.writeMessage{
+.writeMessage {
     position: relative;
     transform: translateY(-1rem);
     width: 65%;
-    top:1rem;
+    top: 1rem;
     margin-left: 1rem;
     height: 5vh;
 }
 
-.writeMessage input{
+.writeMessage input {
     width: 100%;
     background-color: rgb(36, 36, 36);
     outline-color: rgb(23, 85, 255);
@@ -111,7 +111,7 @@
     padding: .7rem;
 }
 
-.membersLayout{
+.membersLayout {
     position: absolute;
     top: 20vh;
     left: 40vw;
@@ -119,30 +119,30 @@
     border-radius: 5px;
 }
 
-.membersLayout > div{
+.membersLayout>div {
     font-size: 25px;
     color: rgb(189, 189, 189);
     background-color: rgb(36, 36, 36);
 }
 
-.membersLayout ul{
+.membersLayout ul {
     height: 40vh;
     overflow-y: scroll;
     color: rgb(23, 85, 255);
     font-weight: 600;
 }
 
-.membersLayout ul::-webkit-scrollbar{
+.membersLayout ul::-webkit-scrollbar {
     width: 5px;
     background-color: transparent;
 }
 
-.membersLayout ul::-webkit-scrollbar-thumb{
+.membersLayout ul::-webkit-scrollbar-thumb {
     background-color: rgb(23, 85, 255);
     border-radius: 20px;
 }
 
-.membersLayout ul li{
+.membersLayout ul li {
     display: flex;
     padding: .5rem 2rem;
     align-items: center;
@@ -150,41 +150,44 @@
     border: 70px
 }
 
-.membersLayout ul li img{
+.membersLayout ul li img {
     width: 80px;
     border-radius: 100%;
 }
 
 @keyframes addMember {
-    0%{
-      opacity: 0;
+    0% {
+        opacity: 0;
     }
-    50%{
-      opacity: 1;
-    }
-    100%{
-      opacity: 0;
-    }
-  }
 
-.memberAdded, .cannotAddMember{
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.memberAdded,
+.cannotAddMember {
     position: absolute;
-    top:1vw;
+    top: 1vw;
     right: 5vw;
     color: white;
     font-weight: 600;
     border-radius: 5px;
-    box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-.memberAdded{
-    background-color:rgb(23, 85, 255);
+.memberAdded {
+    background-color: rgb(23, 85, 255);
     animation: addMember 2s ease-in-out;
 }
 
-.cannotAddMember{
+.cannotAddMember {
     background-color: red;
     animation: addMember 2s ease-in-out;
 }
@@ -192,11 +195,11 @@
 
 @media screen and (max-width:1097px) {
 
-    .chatBody{
+    .chatBody {
         height: 100vh;
     }
 
-    .group-title p{
+    .group-title p {
         position: relative;
         left: 5rem;
         z-index: 0;
@@ -205,30 +208,31 @@
 
 @media screen and (max-width:600px) {
 
-    .container-message{
+    .container-message {
         width: 94%;
         margin-left: 1rem;
     }
-   
+
 }
 
 @media screen and (max-width:555px) {
 
-   .message-info{
-    font-size: 13px;
-   }
-
-   .message-info li p{
-    margin-left: -1px;
+    .message-info {
+        font-size: 13px;
     }
-   
+
+    .message-info li p {
+        margin-left: -1px;
+    }
+
 }
 
 @media screen and (max-height:470px) {
-    .writeMessage{
-        top:0rem;
+    .writeMessage {
+        top: 0rem;
     }
-    .writeMessage input{
+
+    .writeMessage input {
         padding: .3rem;
     }
 }

@@ -1,10 +1,10 @@
-.pos{
+.pos {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.edit{
+.edit {
     width: 30vw;
     margin-top: 6vh;
     min-width: 450px;
@@ -14,7 +14,7 @@
     border-radius: 20px;
 }
 
-.form-header{
+.form-header {
     display: flex;
     height: 60px;
     align-items: center;
@@ -26,18 +26,20 @@
     font-size: 20px;
 }
 
-.form-input-edit{
+.form-input-edit {
     text-align: left;
     margin-top: .2rem;
     padding: 0rem 2rem;
 }
 
-.form-input-edit input, textarea{
+.form-input-edit input,
+textarea {
     margin-top: .5rem;
     background-color: transparent;
 }
 
-.form-input-edit input, textarea{
+.form-input-edit input,
+textarea {
     width: 100%;
     padding: .5rem;
     background-color: transparent;
@@ -46,11 +48,11 @@
     outline: none;
 }
 
-.form-input-edit label{
+.form-input-edit label {
     text-align: left;
 }
 
-.loginRegister{
+.loginRegister {
     margin-top: 6vh;
     width: 28vw;
     min-width: 400px;
@@ -60,54 +62,58 @@
     font-weight: 600;
 }
 
-.lr{
+.lr {
     color: rgb(23, 85, 255);
 }
 
-.lr p{
+.lr p {
     margin-top: 1rem;
 }
 
-.form-input, .form-button{
+.form-input,
+.form-button {
     margin-top: 1rem;
 }
 
-.form-input input{
+.form-input input {
     background-color: rgb(36, 36, 36);
     color: rgb(23, 85, 255);
     font-weight: 600;
     outline: none;
 }
 
-.form-input input , .form-button{
+.form-input input,
+.form-button {
     width: 90%;
 }
 
-.form-button{
+.form-button {
     background-color: rgb(23, 85, 255);
     color: white;
-    padding: .5rem ;
+    padding: .5rem;
 }
 
-.loginRegister > div{
+.loginRegister>div {
     width: 90%;
 }
 
-.loginRegister > div, img, b, p{
+.loginRegister>div,
+img,
+b,
+p {
     margin: 1rem;
 }
 
-.loginRegister > div b{
+.loginRegister>div b {
     font-size: 19px;
 }
 
-.social button{
+.social button {
     color: rgb(23, 85, 255);
 }
 
 @media screen and (max-width: 450px) {
-    .edit{
+    .edit {
         width: 25vw;
     }
 }
-
