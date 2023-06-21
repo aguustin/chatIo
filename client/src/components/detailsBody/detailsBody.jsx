@@ -4,7 +4,7 @@ import UserContext from '../../userContext/userContex';
 const DetailsBody = (user) => {
 
     const [detailsBody, setDetailsBody] = useState(true);
-    const [image, setImage] = useState([]);
+    const [image] = useState([]);
 
     const {editUserContext} = useContext(UserContext);
 
