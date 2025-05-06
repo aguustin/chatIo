@@ -2,7 +2,7 @@
     list-style: none;
 }
 
-.chatBody {
+/*.chatBody {
     height: 100vh;
 }
 
@@ -235,4 +235,25 @@
     .writeMessage input {
         padding: .3rem;
     }
+}*/
+
+.group-title{
+    border-bottom: 1px solid #151a22;
+    color:#f0f4fd
+}
+
+.message-info{
+    color: #f0f4fd;
+}
+
+.message-info-li p{
+    color: #044fff;
+}
+
+.writeMessage{
+    width: 100%;
+}
+
+.input-msg{
+    width: 100%;
 }

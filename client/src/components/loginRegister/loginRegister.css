@@ -1,115 +1,35 @@
-.pos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.loginRegister, .edit{
+    background-color: #0f0f14;
+    color: #7e9cad ;
+    border: 1px solid #044fff;
 }
 
-.edit {
-    width: 30vw;
-    margin-top: 6vh;
-    min-width: 450px;
-    color: rgb(23, 85, 255);
-    font-weight: 600;
-    border: 1px solid rgb(23, 85, 255);
-    border-radius: 20px;
+.loginRegister h2, .edit h2{
+    font-size: 28px;
+    color: #f0f4fd;
 }
 
-.form-header {
-    display: flex;
-    height: 60px;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(23, 85, 255);
-    color: white;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    font-size: 20px;
+.loginRegister p, .edit p{
+    font-size: 22px;
+    color: #7e9cad;
 }
 
-.form-input-edit {
-    text-align: left;
-    margin-top: .2rem;
-    padding: 0rem 2rem;
+.form-button{
+    background-color: #044fff;
+    color: #f0f4fd;
 }
 
-.form-input-edit input,
-textarea {
-    margin-top: .5rem;
-    background-color: transparent;
+.form-input input, .form-input-edit input, .form-input-edit textarea{
+    border: 1px solid #044fff;
+    color: #0f0f14;
 }
 
-.form-input-edit input,
-textarea {
-    width: 100%;
-    padding: .5rem;
-    background-color: transparent;
-    border-radius: 5px;
-    border: 1px solid rgb(23, 85, 255);
-    outline: none;
+.form-input input:autofill{
+    background-color:rgb(36, 36, 36);
 }
 
-.form-input-edit label {
-    text-align: left;
-}
-
-.loginRegister {
-    margin-top: 6vh;
-    width: 28vw;
-    min-width: 400px;
-    border: 1px solid rgb(23, 85, 255);
-    padding: 1.5rem 2.5rem;
-    background-color: rgb(36, 36, 36);
-    font-weight: 600;
-}
-
-.lr {
-    color: rgb(23, 85, 255);
-}
-
-.lr p {
-    margin-top: 1rem;
-}
-
-.form-input,
-.form-button {
-    margin-top: 1rem;
-}
-
-.form-input input {
-    background-color: rgb(36, 36, 36);
-    color: rgb(23, 85, 255);
-    font-weight: 600;
-    outline: none;
-}
-
-.form-input input,
-.form-button {
-    width: 90%;
-}
-
-.form-button {
-    background-color: rgb(23, 85, 255);
-    color: white;
-    padding: .5rem;
-}
-
-.loginRegister>div {
-    width: 90%;
-}
-
-.loginRegister>div,
-img,
-b,
-p {
-    margin: 1rem;
-}
-
-.loginRegister>div b {
-    font-size: 19px;
-}
-
-.social button {
-    color: rgb(23, 85, 255);
+.social button{
+    color: #044fff;
 }
 
 @media screen and (max-width: 450px) {

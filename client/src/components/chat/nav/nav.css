@@ -1,24 +1,3 @@
-.chat-background {
-    position: relative;
-    background-color: rgb(29, 29, 29);
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
-}
-
-.chat-background>div {
-    width: 90vw;
-    min-width: 400px;
-    height: 90vh;
-    background-color: rgb(24, 24, 24);
-    padding: 0;
-    margin: 0;
-}
-
 .openNavLabel {
     position: absolute;
     top: 0;
@@ -36,202 +15,38 @@
 #openNav {
     display: none;
 }
-
-.nav {
-    position: relative;
-    width: 22vw;
-    min-width: 350px;
-    height: 100%;
-    background-color: rgb(19, 19, 19);
-    color: white;
-    font-weight: 600;
-    z-index: 2;
+.chat-background{
+    background-color: #0b0c0f;
 }
 
-.nav>div {
-    list-style: none;
-    align-items: center;
-    width: 90%;
-    margin: 0 auto;
-    margin: .5rem;
-    margin-left: 1rem;
-    color: rgb(184, 184, 184);
+.nav{
+    border-right: 3px solid #3a3a3a;
 }
 
-.nav button {
-    border-radius: 3px;
-    padding: 0rem .5rem;
-    height: 40px;
-    margin-top: 8px;
-}
-
-.nav input {
-    width: 100%;
-    background-color: rgb(24, 24, 24);
-    padding: .7rem .7rem;
-    outline: none;
-    border-radius: 6px;
-    color: rgb(41, 41, 41);
-    font-weight: 500;
-}
-
-.addChannel {
-    justify-content: space-between;
-}
-
-.groups {
-    height: 60vh;
-    overflow-y: scroll;
-}
-
-.groups::-webkit-scrollbar {
-    width: 10px;
-    background-color: transparent;
-}
-
-.groups::-webkit-scrollbar-thumb {
-    background-color: rgb(36, 36, 36);
-    border-radius: 10px;
-}
-
-.groups li:hover {
-    color: rgb(123, 158, 253);
-    transition: all .5s;
-}
-
-.titleG {
-    width: 40px;
-}
-
-.groups img {
-    height: 74px;
-    width: 74px;
-    border-radius: 50%;
-    object-fit: cover;
+#logout{
+    border: 1px solid #3a3a3a;
 }
 
 .user-nav {
-    position: absolute;
-    height: 70px;
-    bottom: .5rem;
-    display: flex;
-    background-color: rgb(12, 12, 12);
-    text-align: left;
-
-    && p {
-        font-size: 14px;
-
-    }
+    color: #f0f4fd;
 }
 
-.user-nav img {
-    width: 4rem;
-    height: 3rem;
-    object-fit: cover;
-    border-radius: 5px;
+.addChannel, .full-title{
+    color: #f0f4fd;
 }
 
-#logout {
-    && button {
-        background-color: black;
-        padding: 0rem 1rem;
-        border: 1px solid white;
-    }
+.titleG{
+    background-color: #044fff;
 }
 
-.form-channel {
-    position: absolute;
-    width: 600px;
-    border-radius: 9px;
-    text-align: left;
-    background-color: rgb(17, 17, 17);
-    z-index: 3;
+.addChannel{
+    border-bottom: 2px solid #3a3a3a;
 }
 
-.form-channel>p {
-    color: rgb(184, 184, 184);
-    font-weight: 600;
+.groups{
+    color: #f0f4fd;
 }
 
-.form-channel form {
-    padding: 0rem 1rem;
-}
-
-.form-channel input,
-textarea {
-    width: 100%;
-    background-color: rgb(36, 36, 36);
-    border-radius: 5px;
-    padding: 1rem;
-}
-
-.form-channel form textarea {
-    margin-top: 1rem;
-}
-
-.addChannelBu {
-
-    && button {
-        padding: .2rem .5rem;
-        width: 100px;
-        border-radius: 5px;
-        background-color: rgb(23, 85, 255);
-        color: white;
-        font-weight: 600;
-        margin-bottom: 8px;
-        margin-left: 10px;
-    }
-}
-
-@media screen and (max-height:980px) {
-
-    .chat-background>div {
-        height: 100%;
-        width: 100%;
-    }
-
-}
-
-@media screen and (max-width:1097px) {
-
-    .nav {
-        position: absolute;
-        left: 0;
-        transform: translateX(-260px);
-        z-index: 2;
-    }
-
-    .chat-background>div {
-        height: 100%;
-        width: 100%;
-    }
-
-    #openNav:checked~.nav {
-        transform: translateX(0px);
-        transition: .3s;
-    }
-
-    #openNav:not(:checked)~.nav {
-        transform: translateX(-350px);
-        transition: .3s;
-    }
-
-    #openNav:checked~.openNavLabel {
-        transform: translateX(350px);
-        transition: .3s;
-    }
-
-    #openNav:not(:checked)~.openNavLabel {
-        transform: translateX(0px);
-        transition: .3s;
-    }
-}
-
-@media screen and (max-height:592px) {
-
-    .openNavLabel img {
-        width: 20px;
-        bottom: 23px;
-    }
-
+.members{
+    border-radius: 100%;
 }

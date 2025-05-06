@@ -8,14 +8,14 @@ const DetailsEdit = () => {
 
     const Details = () => {
         return (
-            <div className='details mx-auto rounded-3xl'>
+            <div className='details text-center mx-auto rounded-3xl'>
                 <div className='h2'>
-                    <h2>PROFILE</h2>
+                    <h2 className='text-3xl'>PROFILE</h2>
                 </div>
-                <table className="detailsEdit table-fixed text-left mx-auto">
+                <table className="detailsEdit text-center table-fixed text-left mx-auto">
                     <thead>
-                        <div className='profile'>
-                            <p>Some info maybe visible to other people</p>
+                        <div className='profile mb-5 mt-3'>
+                            <p className='text-xl'>Some info maybe visible to other people</p>
                         </div>
                     </thead>
                     {session.map(user =>

@@ -1,0 +1,6 @@
+app background #111315 chat #101112
+second background #0f0f14 chat #0b0c0f
+botones #044fff
+parrafos #7e9cad  chat  #585a5fqerjqjrpqorjvp'qrpoq birp    
+parrafos botones #f0f4fd
+nombre en chat #2f78fb

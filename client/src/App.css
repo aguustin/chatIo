@@ -5,7 +5,10 @@
 .App {
   position: absolute;
   text-align: center;
-  background-color: rgb(36, 36, 36);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #111315;
   top: 0;
   left: 0;
   right: 0;
@@ -14,4 +17,22 @@
 
 input:autofill{
   background-color:rgb(36, 36, 36);
+}
+
+.edit-b{
+  background-color: #1d2024;
+  color: #f0f4fd;
+}
+
+.enter-b , .writeMessage button{
+  background-color: #044fff;
+  color: #f0f4fd;
+}
+
+.details h2{
+  color: #f0f4fd;
+}
+
+.details p{
+  color: #7e9cad ;
 }

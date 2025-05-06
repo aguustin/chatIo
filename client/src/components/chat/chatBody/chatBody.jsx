@@ -76,30 +76,38 @@ const ChatBody = () => {
     }, []);
 
     return (
-        <div className='chatBody w-full'>
-            {messages.map((m) => <div key={m._id} className='group-title'>
-                <p>{m.title}</p>
-                {m.adminId === memberData[0]._id ? <form onSubmit={(e) => addMember(e, m._id)}>
-                    <input name="addMember" type="email" placeholder=' '></input>
-                </form> : ''}
+        <div className='chatBody w-full h-screen relative'>
+            {messages.map((m) => 
+            <div key={m._id} className='group-title relative flex items-center p-6'>
+                <p className='text-2xl'>{m.title}</p>
+                {m.adminId === memberData[0]._id ? 
+                    <form className='absolute right-6 flex items-center' onSubmit={(e) => addMember(e, m._id)}>
+                        <p className='mr-2 text-lg'>Send invitation:</p>
+                        <input className='bg-zinc-900 p-2 w-[250px]' name="addMember" type="email" placeholder=' '></input>
+                    </form> 
+                : 
+                ''
+                }
             </div>)}
-            <div className='container-message'>
-                {newMessages.map((mm, i) => <div key={mm._id} className='message'>
+            <div className='container-message p-6'>
+                {newMessages.map((mm, i) => 
+                <div key={mm._id} className='message flex mt-5 items-center'>
                     <div>
-                        {mm.memberPhoto ? <img src={mm.memberPhoto} alt=""></img> : <img src={notUser} alt=""></img>}
+                        {mm.memberPhoto ? <img className='w-[70px]' src={mm.memberPhoto} alt=""></img> : <img className='w-[70px]' src={notUser} alt=""></img>}
                     </div>
-                    <div className='message-info'>
-                        <li className='flex'>
+                    <div className='message-info ml-3 text-left'>
+                        <li className='message-info-li flex'>
                             <p>{mm.memberName}</p>
-                            <p>{mm.messageDate}</p>
+                            <p className='ml-3'>{mm.messageDate}</p>
                         </li>
-                        <p>{mm.messageMember}</p>
+                        <p className='text-lg'>{mm.messageMember}</p>
                     </div>
                 </div>)}
             </div>
-            {messages.map((m) => <div key={m._id} className='writeMessage'>
-                <form onSubmit={(e) => sendMessage(e, m._id)}>
-                    <input name="newMessage" type="text" placeholder='Tape a new message'></input>
+            {messages.map((m) => <div key={m._id} className='writeMessage absolute bottom-0 p-6'>
+                <form className='flex items-center' onSubmit={(e) => sendMessage(e, m._id)}>
+                    <input className='input-msg bg-zinc-900 p-3 rounded-lg text-white' name="newMessage" type="text" placeholder='Tape a new message'></input>
+                    <button className='p-3 rounded-lg ml-3'>Send</button>
                 </form>
             </div>)}
             <ToastContainer
