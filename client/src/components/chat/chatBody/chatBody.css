@@ -257,3 +257,9 @@
 .input-msg{
     width: 100%;
 }
+
+@media screen and (max-width:999px) {
+    .channel-chat-title{
+        margin-left: 60px;
+    }
+}

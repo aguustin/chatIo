@@ -34,15 +34,15 @@ const DetailsBody = (user) => {
                     </div>
                     <div className='form-group mt-6 relative'>
                         <label className='text-xl absolute left-0'>Name</label>
-                        <textarea className="mt-8" type="text" disabled="true" name="name" value={user.user.name} maxlength="10"></textarea>
+                        <input className="mt-8 p-2 w-full bg-slate-900" type="text" disabled="true" name="name" value={user.user.name} maxlength="10"></input>
                     </div>
                     <div className='form-group mt-6 relative'>
                         <label className='text-xl absolute left-0'>Bio</label>
-                        <textarea className="mt-8" type="text" disabled="true" name="bio" value={user.user.bio} ></textarea>
+                        <textarea className="mt-8 p-2 w-full bg-slate-900" type="text" disabled="true" name="bio" value={user.user.bio} ></textarea>
                     </div>
                     <div className='form-group mt-6 relative'>
                         <label className='text-xl absolute left-0'>Phone</label>
-                        <input className="w-full rounded-lg pl-3 pt-2 pb-2 mt-8" type="text" disabled="true" name="phone" value={user.user.phone}  ></input>
+                        <input className="w-full bg-slate-900 rounded-lg pl-3 pt-2 pb-2 mt-8" type="text" disabled="true" name="phone" value={user.user.phone}  ></input>
                     </div>
                 </form>
                 <div className='form-buttons flex justify-between mt-12 pl-9 pr-9'>
@@ -65,15 +65,15 @@ const DetailsBody = (user) => {
                     </div>
                     <div className='form-group mt-6 relative'>
                         <label className='text-xl absolute left-0'>Name</label>
-                        <input className="w-full rounded-lg pl-3 pt-2 pb-2 mt-8" type="text" name="name" placeholder='New name' required></input>
+                        <input className="w-full bg-slate-900 rounded-lg pl-3 pt-2 pb-2 mt-8" type="text" name="name" placeholder='New name' required></input>
                     </div>
                     <div className='form-group mt-6 relative'>
                         <label className='text-xl absolute left-0'>Bio</label>
-                        <textarea className="w-full rounded-lg pl-3 pt-2 pb-2 mt-8" type="text" name="bio" placeholder='New bio' required></textarea>
+                        <textarea className="w-full bg-slate-900 rounded-lg pl-3 pt-2 pb-2 mt-8" type="text" name="bio" placeholder='New bio' required></textarea>
                     </div>
                     <div className='form-group mt-6 relative'>
                         <label className='text-xl absolute left-0'>Password</label>
-                        <input className="w-full rounded-lg pl-3 pt-2 pb-2 mt-8" type="password" name="password" placeholder='New password'></input>
+                        <input className="w-full bg-slate-900 rounded-lg pl-3 pt-2 pb-2 mt-8" type="password" name="password" placeholder='New password'></input>
                     </div>
                     <div className='form-buttons flex justify-between mt-12 pl-9 pr-9'>
                         <button className='edit-b w-[150px] p-3 rounded-lg text-lg' onClick={() => setDetailsBody(!detailsBody)}>Cancel Edit</button>

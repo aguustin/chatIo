@@ -79,14 +79,14 @@ const ChatBody = () => {
         <div className='chatBody w-full h-screen relative'>
             {messages.map((m) => 
             <div key={m._id} className='group-title relative flex items-center p-6'>
-                <p className='text-2xl'>{m.title}</p>
+                <p className='channel-chat-title text-2xl'>{m.title}</p>
                 {m.adminId === memberData[0]._id ? 
                     <form className='absolute right-6 flex items-center' onSubmit={(e) => addMember(e, m._id)}>
                         <p className='mr-2 text-lg'>Send invitation:</p>
                         <input className='bg-zinc-900 p-2 w-[250px]' name="addMember" type="email" placeholder=' '></input>
                     </form> 
-                : 
-                ''
+                    : 
+                    ''
                 }
             </div>)}
             <div className='container-message p-6'>

@@ -3,9 +3,14 @@
     top: 0;
     left: 0;
     cursor: pointer;
-    background-color: red;
     z-index: 1;
     height: 0px;
+}
+
+.blackout{
+    opacity: .6;
+    background-color: black;
+    z-index: 4;
 }
 
 .openNavLabel img {
@@ -13,8 +18,18 @@
 }
 
 #openNav {
+    position: fixed;
+    top:15px;
+    left: 40px;
     display: none;
+    cursor: pointer;
+    z-index: 3;
 }
+
+#openNav:hover{
+    cursor: pointer;
+}
+
 .chat-background{
     background-color: #0b0c0f;
 }
@@ -49,4 +64,49 @@
 
 .members{
     border-radius: 100%;
+}
+
+.form-channel{
+    z-index: 5;
+    background-color: #111315;
+}
+
+.saveChannel{
+    background-color: #044fff;
+}
+
+.cancelChannel{
+    background-color: #3a3a3a;
+}
+
+.channel-title{
+    color: #044fff
+}
+
+.add{
+    background-color: #044fff;
+}
+
+@media screen and (max-width:999px) {
+    .nav{
+        position: fixed;
+        left: -480px;
+        z-index: 3;
+        background-color: #111315;
+    }
+    #openNav {
+        display: block;
+        background-color:#111315;
+        padding:10px;
+    }
+    #openNav:hover{
+        cursor: pointer;
+    }
+    .add{
+        height: 40px;
+        width: 120px;
+        font-size: 30px;
+        padding: 0 !important;
+        margin-right: 0px;
+    }
 }
